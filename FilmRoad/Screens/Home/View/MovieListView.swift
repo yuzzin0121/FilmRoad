@@ -9,14 +9,26 @@ import SwiftUI
 
 struct MovieListView: View {
     var body: some View {
-        ZStack {
-            Color(.black)
-                .ignoresSafeArea()
-            VStack {
+        NavigationStack {
+            ZStack {
+                Color(.black)
+                    .ignoresSafeArea()
                 
-                Spacer()
             }
+            .navigationBar {
+                Text("FilmRoad")
+                    .font(.title2).bold()
+            } trailing: {
+                NavigationLink {
+                    SearchFilmView()
+                } label: {
+                    Image(ImageString.search)
+                }
+
+            }
+
         }
+        .foregroundStyle(.white)
     }
 }
 

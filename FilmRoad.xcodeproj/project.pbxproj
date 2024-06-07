@@ -21,6 +21,10 @@
 		612AA1D42C12AF0700A7B1F5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D32C12AF0700A7B1F5 /* Image.swift */; };
 		612AA1D62C12C0DF00A7B1F5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */; };
 		612AA1D82C12C6E200A7B1F5 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D72C12C6E200A7B1F5 /* ButtonWrapper.swift */; };
+		612AA1DC2C12CF8D00A7B1F5 /* SearchFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1DB2C12CF8D00A7B1F5 /* SearchFilmView.swift */; };
+		612AA1DF2C12D34000A7B1F5 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1DE2C12D34000A7B1F5 /* MovieListViewModel.swift */; };
+		6173C5082C12D4000089E1E6 /* NavigationBarWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C5072C12D4000089E1E6 /* NavigationBarWrapper.swift */; };
+		6173C50B2C12D9E10089E1E6 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6173C50A2C12D9E10089E1E6 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		612AA1D32C12AF0700A7B1F5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		612AA1D72C12C6E200A7B1F5 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
+		612AA1DB2C12CF8D00A7B1F5 /* SearchFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilmView.swift; sourceTree = "<group>"; };
+		612AA1DE2C12D34000A7B1F5 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		6173C5072C12D4000089E1E6 /* NavigationBarWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarWrapper.swift; sourceTree = "<group>"; };
+		6173C50A2C12D9E10089E1E6 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +162,9 @@
 		612AA1BB2C12AC0000A7B1F5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1D92C12CF7300A7B1F5 /* Search */,
 				612AA1C12C12ADFC00A7B1F5 /* View */,
+				612AA1DD2C12D32C00A7B1F5 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -212,6 +222,7 @@
 			children = (
 				612AA1CF2C12AEA700A7B1F5 /* MainTab */,
 				612AA1D72C12C6E200A7B1F5 /* ButtonWrapper.swift */,
+				6173C5072C12D4000089E1E6 /* NavigationBarWrapper.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";
@@ -231,6 +242,39 @@
 				612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		612AA1D92C12CF7300A7B1F5 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1DA2C12CF7F00A7B1F5 /* View */,
+				6173C5092C12D96E0089E1E6 /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		612AA1DA2C12CF7F00A7B1F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1DB2C12CF8D00A7B1F5 /* SearchFilmView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612AA1DD2C12D32C00A7B1F5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1DE2C12D34000A7B1F5 /* MovieListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6173C5092C12D96E0089E1E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6173C50A2C12D9E10089E1E6 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,8 +357,12 @@
 				612AA1D12C12AEC000A7B1F5 /* TabItemModifier.swift in Sources */,
 				612AA1CA2C12AE3900A7B1F5 /* MyProfileView.swift in Sources */,
 				612AA1D82C12C6E200A7B1F5 /* ButtonWrapper.swift in Sources */,
+				6173C50B2C12D9E10089E1E6 /* SearchViewModel.swift in Sources */,
+				612AA1DC2C12CF8D00A7B1F5 /* SearchFilmView.swift in Sources */,
+				6173C5082C12D4000089E1E6 /* NavigationBarWrapper.swift in Sources */,
 				612AA1D62C12C0DF00A7B1F5 /* TabItem.swift in Sources */,
 				612AA1C72C12AE2700A7B1F5 /* MyListView.swift in Sources */,
+				612AA1DF2C12D34000A7B1F5 /* MovieListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

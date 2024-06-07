@@ -8,6 +8,8 @@
 import Foundation
 
 enum ImageString {
+    static let arrowLeft: String = "arrowLeft"
+    static let search: String = "search"
     static let video: String = "video"
     static let videoSeleted: String = "videoSelected"
     

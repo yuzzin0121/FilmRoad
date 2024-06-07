@@ -9,7 +9,14 @@ import SwiftUI
 
 struct MovieListView: View {
     var body: some View {
-        Text("MovieList")
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
+            VStack {
+                
+                Spacer()
+            }
+        }
     }
 }
 

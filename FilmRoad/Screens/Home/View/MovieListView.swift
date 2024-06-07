@@ -40,6 +40,17 @@ struct MovieListView: View {
                 .scaledToFill()
                 .frame(width: .infinity, height: 370)
                 .clipShape(.rect(cornerRadius: 12))
+                .overlay {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Spacer()
+                            Image(ImageString.playButton)
+                                .shadow(radius: 10)
+                        }
+                    }
+                    .padding(20)
+                }
         } placeholder: {
             Rectangle()
                 .overlay {

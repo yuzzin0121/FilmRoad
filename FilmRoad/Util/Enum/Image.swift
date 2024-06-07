@@ -17,4 +17,6 @@ enum ImageString {
     static let userSquareSelected: String = "userSquareSelected"
     
     static let bookmark: String = "bookmark"
+    
+    static let playButton: String = "playButton"
 }

@@ -8,23 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		612AA1A32C12AB5800A7B1F5 /* FilmRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1A22C12AB5800A7B1F5 /* FilmRoadApp.swift */; };
-		612AA1A52C12AB5800A7B1F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1A42C12AB5800A7B1F5 /* ContentView.swift */; };
 		612AA1A72C12AB5900A7B1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */; };
 		612AA1AA2C12AB5900A7B1F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */; };
 		612AA1B12C12AB9D00A7B1F5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B02C12AB9D00A7B1F5 /* .gitignore */; };
 		612AA1B92C12ABF000A7B1F5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */; };
 		612AA1C02C12ACBE00A7B1F5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1BF2C12ACBE00A7B1F5 /* APIKey.swift */; };
+		612AA1C32C12AE0C00A7B1F5 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1C22C12AE0C00A7B1F5 /* MovieListView.swift */; };
+		612AA1C72C12AE2700A7B1F5 /* MyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1C62C12AE2700A7B1F5 /* MyListView.swift */; };
+		612AA1CA2C12AE3900A7B1F5 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1C92C12AE3900A7B1F5 /* MyProfileView.swift */; };
+		612AA1CD2C12AE5D00A7B1F5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1CC2C12AE5D00A7B1F5 /* MainTabView.swift */; };
+		612AA1D12C12AEC000A7B1F5 /* TabItemModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D02C12AEC000A7B1F5 /* TabItemModifier.swift */; };
+		612AA1D42C12AF0700A7B1F5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D32C12AF0700A7B1F5 /* Image.swift */; };
+		612AA1D62C12C0DF00A7B1F5 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		612AA19F2C12AB5800A7B1F5 /* FilmRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		612AA1A22C12AB5800A7B1F5 /* FilmRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRoadApp.swift; sourceTree = "<group>"; };
-		612AA1A42C12AB5800A7B1F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		612AA1B02C12AB9D00A7B1F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		612AA1BF2C12ACBE00A7B1F5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		612AA1C22C12AE0C00A7B1F5 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		612AA1C62C12AE2700A7B1F5 /* MyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListView.swift; sourceTree = "<group>"; };
+		612AA1C92C12AE3900A7B1F5 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		612AA1CC2C12AE5D00A7B1F5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		612AA1D02C12AEC000A7B1F5 /* TabItemModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemModifier.swift; sourceTree = "<group>"; };
+		612AA1D32C12AF0700A7B1F5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,7 @@
 				612AA1B32C12ABB500A7B1F5 /* Util */,
 				612AA1B42C12ABBC00A7B1F5 /* Network */,
 				612AA1B52C12ABC500A7B1F5 /* Model */,
+				612AA1CE2C12AE9900A7B1F5 /* CustomModifier */,
 				612AA1B62C12ABCD00A7B1F5 /* Screens */,
 				612AA1B72C12ABD700A7B1F5 /* Resources */,
 				612AA1A82C12AB5900A7B1F5 /* Preview Content */,
@@ -88,6 +101,7 @@
 		612AA1B32C12ABB500A7B1F5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1D22C12AF0000A7B1F5 /* Enum */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -114,7 +128,6 @@
 				612AA1BD2C12AC1200A7B1F5 /* MyList */,
 				612AA1BC2C12AC0900A7B1F5 /* Profile */,
 				612AA1BA2C12ABF800A7B1F5 /* MainTab */,
-				612AA1A42C12AB5800A7B1F5 /* ContentView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -131,6 +144,7 @@
 		612AA1BA2C12ABF800A7B1F5 /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1CB2C12AE4E00A7B1F5 /* View */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -138,6 +152,7 @@
 		612AA1BB2C12AC0000A7B1F5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1C12C12ADFC00A7B1F5 /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -145,6 +160,7 @@
 		612AA1BC2C12AC0900A7B1F5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1C82C12AE2F00A7B1F5 /* View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -152,8 +168,66 @@
 		612AA1BD2C12AC1200A7B1F5 /* MyList */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1C42C12AE1800A7B1F5 /* View */,
 			);
 			path = MyList;
+			sourceTree = "<group>";
+		};
+		612AA1C12C12ADFC00A7B1F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1C22C12AE0C00A7B1F5 /* MovieListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612AA1C42C12AE1800A7B1F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1C62C12AE2700A7B1F5 /* MyListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612AA1C82C12AE2F00A7B1F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1C92C12AE3900A7B1F5 /* MyProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612AA1CB2C12AE4E00A7B1F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1CC2C12AE5D00A7B1F5 /* MainTabView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612AA1CE2C12AE9900A7B1F5 /* CustomModifier */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1CF2C12AEA700A7B1F5 /* MainTab */,
+			);
+			path = CustomModifier;
+			sourceTree = "<group>";
+		};
+		612AA1CF2C12AEA700A7B1F5 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1D02C12AEC000A7B1F5 /* TabItemModifier.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		612AA1D22C12AF0000A7B1F5 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1D32C12AF0700A7B1F5 /* Image.swift */,
+				612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,9 +302,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612AA1A52C12AB5800A7B1F5 /* ContentView.swift in Sources */,
+				612AA1D42C12AF0700A7B1F5 /* Image.swift in Sources */,
+				612AA1C32C12AE0C00A7B1F5 /* MovieListView.swift in Sources */,
 				612AA1C02C12ACBE00A7B1F5 /* APIKey.swift in Sources */,
 				612AA1A32C12AB5800A7B1F5 /* FilmRoadApp.swift in Sources */,
+				612AA1CD2C12AE5D00A7B1F5 /* MainTabView.swift in Sources */,
+				612AA1D12C12AEC000A7B1F5 /* TabItemModifier.swift in Sources */,
+				612AA1CA2C12AE3900A7B1F5 /* MyProfileView.swift in Sources */,
+				612AA1D62C12C0DF00A7B1F5 /* TabItem.swift in Sources */,
+				612AA1C72C12AE2700A7B1F5 /* MyListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,25 +16,23 @@ struct TVCellView: View {
                 switch data {
                 case .empty:
                     ProgressView()
-                        .frame(width: 200, height: 200)
+                        .frame(width: 140, height: 180)
                 case .success(let image):
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 150, height: 200)
+                        .frame(width: 140, height: 180)
                         .clipShape(.rect(cornerRadius: 12))
-                case .failure(let error):
-                    Image(systemName: "star")
-                        .background(.yellow)
-                        .clipShape(Circle())
+                case .failure(_):
+                    Image(ImageString.video)
+                        .frame(width: 140, height: 180)
                 @unknown default:
-                    Image(systemName: "star")
-                        .background(.yellow)
-                        .clipShape(Circle())
+                    Image(ImageString.video)
+                        .frame(width: 140, height: 180)
                 }
             }
-                .scaledToFit()
-                .frame(width: 150, height: 200)
+            .scaledToFit()
+            .frame(width: 140, height: 180)
         }
     }
 }

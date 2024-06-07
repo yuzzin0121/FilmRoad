@@ -23,6 +23,16 @@ struct MovieListView: View {
     }
     @StateObject private var viewModel = MovieListViewModel()
     
+    init() {
+        let coloredAppearance = UINavigationBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .black
+
+        UINavigationBar.appearance().standardAppearance = coloredAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredAppearance
+        UINavigationBar.appearance().compactAppearance = coloredAppearance
+    }
+    
     func sectionView(tvList: [TV]) -> some View {
         ScrollView(.horizontal) {
             LazyHStack(content: {
@@ -42,8 +52,11 @@ struct MovieListView: View {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
-                
+            
                 ScrollView {
+                    Spacer()
+                        .frame(height: 30)
+                    
                     LazyVStack(alignment: .leading) {
                         ForEach(Array(viewModel.output.tvTotalList.enumerated()), id: \.element) { index, tvList in
                             Text(MovieSection(rawValue: index)!.title).bold()
@@ -51,12 +64,11 @@ struct MovieListView: View {
                         }
                     }
                     .padding(.leading)
-                    
                 }
             }
             .navigationBar {
                 Text("FilmRoad")
-                    .font(.title2).bold()
+                    .font(.title).bold()
             } trailing: {
                 NavigationLink {
                     SearchFilmView()

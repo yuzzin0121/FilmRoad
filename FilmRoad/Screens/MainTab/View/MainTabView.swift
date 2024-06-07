@@ -11,8 +11,13 @@ struct MainTabView: View {
     @State private var selection = 0
     
     init() {
-        UITabBar.appearance().backgroundColor = .black
-        UITabBar.appearance().unselectedItemTintColor = .systemGray
+        let coloredAppearance = UITabBarAppearance()
+        coloredAppearance.configureWithTransparentBackground()
+        coloredAppearance.backgroundColor = .black
+        
+        UITabBar.appearance().standardAppearance = coloredAppearance
+        UITabBar.appearance().standardAppearance = coloredAppearance
+        UITabBar.appearance().scrollEdgeAppearance = coloredAppearance
     }
     var body: some View {
         
@@ -30,6 +35,7 @@ struct MainTabView: View {
                 .tag(2)
         }
         .accentColor(Color.white)
+        .toolbarBackground(.visible, for: .tabBar)
     }
 }
 

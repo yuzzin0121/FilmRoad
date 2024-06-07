@@ -11,6 +11,8 @@
 		612AA1A52C12AB5800A7B1F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1A42C12AB5800A7B1F5 /* ContentView.swift */; };
 		612AA1A72C12AB5900A7B1F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */; };
 		612AA1AA2C12AB5900A7B1F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */; };
+		612AA1B12C12AB9D00A7B1F5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B02C12AB9D00A7B1F5 /* .gitignore */; };
+		612AA1B92C12ABF000A7B1F5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		612AA1A42C12AB5800A7B1F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		612AA1B02C12AB9D00A7B1F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 		612AA1962C12AB5800A7B1F5 = {
 			isa = PBXGroup;
 			children = (
+				612AA1B02C12AB9D00A7B1F5 /* .gitignore */,
 				612AA1A12C12AB5800A7B1F5 /* FilmRoad */,
 				612AA1A02C12AB5800A7B1F5 /* Products */,
 			);
@@ -51,9 +56,12 @@
 		612AA1A12C12AB5800A7B1F5 /* FilmRoad */ = {
 			isa = PBXGroup;
 			children = (
-				612AA1A22C12AB5800A7B1F5 /* FilmRoadApp.swift */,
-				612AA1A42C12AB5800A7B1F5 /* ContentView.swift */,
-				612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */,
+				612AA1B22C12ABAC00A7B1F5 /* Application */,
+				612AA1B32C12ABB500A7B1F5 /* Util */,
+				612AA1B42C12ABBC00A7B1F5 /* Network */,
+				612AA1B52C12ABC500A7B1F5 /* Model */,
+				612AA1B62C12ABCD00A7B1F5 /* Screens */,
+				612AA1B72C12ABD700A7B1F5 /* Resources */,
 				612AA1A82C12AB5900A7B1F5 /* Preview Content */,
 			);
 			path = FilmRoad;
@@ -65,6 +73,84 @@
 				612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		612AA1B22C12ABAC00A7B1F5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1A22C12AB5800A7B1F5 /* FilmRoadApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		612AA1B32C12ABB500A7B1F5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		612AA1B42C12ABBC00A7B1F5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		612AA1B52C12ABC500A7B1F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		612AA1B62C12ABCD00A7B1F5 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1BB2C12AC0000A7B1F5 /* Home */,
+				612AA1BD2C12AC1200A7B1F5 /* MyList */,
+				612AA1BC2C12AC0900A7B1F5 /* Profile */,
+				612AA1BA2C12ABF800A7B1F5 /* MainTab */,
+				612AA1A42C12AB5800A7B1F5 /* ContentView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		612AA1B72C12ABD700A7B1F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				612AA1A62C12AB5900A7B1F5 /* Assets.xcassets */,
+				612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		612AA1BA2C12ABF800A7B1F5 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		612AA1BB2C12AC0000A7B1F5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		612AA1BC2C12AC0900A7B1F5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		612AA1BD2C12AC1200A7B1F5 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +212,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				612AA1AA2C12AB5900A7B1F5 /* Preview Assets.xcassets in Resources */,
+				612AA1B92C12ABF000A7B1F5 /* Colors.xcassets in Resources */,
+				612AA1B12C12AB9D00A7B1F5 /* .gitignore in Resources */,
 				612AA1A72C12AB5900A7B1F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

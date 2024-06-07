@@ -13,6 +13,7 @@
 		612AA1AA2C12AB5900A7B1F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */; };
 		612AA1B12C12AB9D00A7B1F5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B02C12AB9D00A7B1F5 /* .gitignore */; };
 		612AA1B92C12ABF000A7B1F5 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */; };
+		612AA1C02C12ACBE00A7B1F5 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612AA1BF2C12ACBE00A7B1F5 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		612AA1A92C12AB5900A7B1F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		612AA1B02C12AB9D00A7B1F5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		612AA1B82C12ABF000A7B1F5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		612AA1BF2C12ACBE00A7B1F5 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		612AA1B42C12ABBC00A7B1F5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				612AA1BF2C12ACBE00A7B1F5 /* APIKey.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				612AA1A52C12AB5800A7B1F5 /* ContentView.swift in Sources */,
+				612AA1C02C12ACBE00A7B1F5 /* APIKey.swift in Sources */,
 				612AA1A32C12AB5800A7B1F5 /* FilmRoadApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -33,6 +33,25 @@ struct MovieListView: View {
         UINavigationBar.appearance().compactAppearance = coloredAppearance
     }
     
+    func randomTV(tv: TV?) -> some View {
+        AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(width: .infinity, height: 370)
+                .clipShape(.rect(cornerRadius: 12))
+        } placeholder: {
+            Rectangle()
+                .overlay {
+                    Image(ImageString.video)
+                }
+                .background(.gray)
+                .frame(width: .infinity, height: 370)
+        }
+        .padding(20)
+        
+    }
+    
     func sectionView(tvList: [TV]) -> some View {
         ScrollView(.horizontal) {
             LazyHStack(content: {
@@ -54,8 +73,7 @@ struct MovieListView: View {
                     .ignoresSafeArea()
             
                 ScrollView {
-                    Spacer()
-                        .frame(height: 30)
+                    randomTV(tv: viewModel.output.randomTV)
                     
                     LazyVStack(alignment: .leading) {
                         ForEach(Array(viewModel.output.tvTotalList.enumerated()), id: \.element) { index, tvList in

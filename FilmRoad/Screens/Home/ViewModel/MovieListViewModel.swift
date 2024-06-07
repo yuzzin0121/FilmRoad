@@ -27,6 +27,7 @@ final class MovieListViewModel: ObservableObject {
                     let topRated = await self.fetchTV(router: TMDBRouter.topRated)
                     let trend = await self.fetchTV(router: TMDBRouter.trend(page: 1))
                     let popular = await self.fetchTV(router: TMDBRouter.popular(page: 1))
+                    self.getRandomTV(tvList: topRated)
                     self.appendTVList(tvList: topRated)
                     self.appendTVList(tvList: trend)
                     self.appendTVList(tvList: popular)
@@ -35,11 +36,16 @@ final class MovieListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func appendTVList(tvList: [TV]) {
+    private func getRandomTV(tvList: [TV]) {
+        guard let randomTV = tvList.randomElement() else { return }
+        output.randomTV = randomTV
+    }
+    
+    private func appendTVList(tvList: [TV]) {
         self.output.tvTotalList.append(tvList)
     }
     
-    func fetchTV(router: TMDBRouter) async -> [TV] {
+    private func fetchTV(router: TMDBRouter) async -> [TV] {
         do {
             let tvResponseModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVResponseModel.self, router: router)
             return tvResponseModel.results
@@ -55,6 +61,7 @@ extension MovieListViewModel {
     }
     struct Output {
         var tvTotalList: [[TV]] = []
+        var randomTV: TV?
     }
     
     enum Action {

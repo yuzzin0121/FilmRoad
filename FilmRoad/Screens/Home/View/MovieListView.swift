@@ -35,29 +35,35 @@ struct MovieListView: View {
     
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
-            image
-                .resizable()
-                .scaledToFill()
-                .frame(width: .infinity, height: 370)
-                .clipShape(.rect(cornerRadius: 12))
-                .overlay {
-                    VStack {
-                        Spacer()
-                        HStack {
+            NavigationLink {
+                MovieDetailView()
+            } label: {
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: .infinity, height: 370)
+                    .clipShape(.rect(cornerRadius: 12))
+                    .overlay {
+                        VStack {
                             Spacer()
-                            Image(ImageString.playButton)
-                                .shadow(radius: 10)
+                            HStack {
+                                Spacer()
+                                Image(ImageString.playButton)
+                                    .shadow(radius: 10)
+                            }
                         }
+                        .padding(20)
                     }
-                    .padding(20)
-                }
+            }
         } placeholder: {
-            Rectangle()
-                .overlay {
-                    Image(ImageString.video)
-                }
-                .background(.gray)
-                .frame(width: .infinity, height: 370)
+            NavigationLink {
+                MovieDetailView()
+            } label: {
+                Rectangle()
+                    .fill(.white.opacity(0.1))
+                    .frame(width: .infinity, height: 370)
+                    .clipShape(.rect(cornerRadius: 12))
+            }
         }
         .padding(20)
         
@@ -67,14 +73,15 @@ struct MovieListView: View {
         ScrollView(.horizontal) {
             LazyHStack(content: {
                 ForEach(tvList, id: \.id) { tv in
-                    TVCellView(tv: tv)
+                    NavigationLink {
+                        MovieDetailView()
+                    } label: {
+                        TVCellView(tv: tv)
+                    }
                 }
             })
         }
         .padding(.bottom, 20)
-        .onAppear(perform: {
-            print("야호")
-        })
     }
     
     var body: some View {

@@ -13,13 +13,20 @@ final class MovieDetailViewModel: ObservableObject {
     
     var input = Input()
     @Published var output = Output()
+    @Published var tv: TV?
     
-    init() {
+    
+    init(tv: TV?) {
+        self.tv = tv
         transform()
     }
     
     private func transform() {
-        
+        input.viewOnAppear.sink { [weak self] _ in
+            guard let self else { return }
+            
+        }
+        .store(in: &cancellables)
     }
 }
 

@@ -27,6 +27,7 @@ final class MovieListViewModel: ObservableObject {
                     let topRated = await self.fetchTV(router: TMDBRouter.topRated)
                     let trend = await self.fetchTV(router: TMDBRouter.trend(page: 1))
                     let popular = await self.fetchTV(router: TMDBRouter.popular(page: 1))
+                    self.output.tvTotalList = []
                     self.getRandomTV(tvList: topRated)
                     self.appendTVList(tvList: topRated)
                     self.appendTVList(tvList: trend)

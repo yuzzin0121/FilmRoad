@@ -19,4 +19,5 @@ enum ImageString {
     static let bookmark: String = "bookmark"
     
     static let playButton: String = "playButton"
+    static let playCircle: String = "playCircle"
 }

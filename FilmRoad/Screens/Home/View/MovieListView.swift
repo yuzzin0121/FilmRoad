@@ -36,12 +36,12 @@ struct MovieListView: View {
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
             NavigationLink {
-                MovieDetailView()
+                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
             } label: {
                 image
                     .resizable()
                     .scaledToFill()
-                    .frame(width: .infinity, height: 370)
+                    .frame(height: 370)
                     .clipShape(.rect(cornerRadius: 12))
                     .overlay {
                         VStack {
@@ -57,11 +57,11 @@ struct MovieListView: View {
             }
         } placeholder: {
             NavigationLink {
-                MovieDetailView()
+                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
             } label: {
                 Rectangle()
                     .fill(.white.opacity(0.1))
-                    .frame(width: .infinity, height: 370)
+                    .frame(height: 370)
                     .clipShape(.rect(cornerRadius: 12))
             }
         }
@@ -74,7 +74,7 @@ struct MovieListView: View {
             LazyHStack(content: {
                 ForEach(tvList, id: \.id) { tv in
                     NavigationLink {
-                        MovieDetailView()
+                        MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
                     } label: {
                         TVCellView(tv: tv)
                     }

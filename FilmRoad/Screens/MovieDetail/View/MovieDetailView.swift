@@ -17,9 +17,9 @@ struct MovieDetailView: View {
             
             VStack {
                 posterImage(tv: viewModel.tv)
-                VStack {
+                VStack(spacing: 6) {
                     tvText(name: viewModel.tv?.name)
-                    
+                    descriptionText(viewModel.output.tvInfoModel?.overview)
                 }
                 .padding(.vertical, 4)
                 .padding(.horizontal, 10)
@@ -43,7 +43,9 @@ struct MovieDetailView: View {
     func descriptionText(_ description: String?) -> some View {
         HStack {
             Text(description ?? "")
-                .font(.caption)
+                .font(.system(size: 14))
+                .lineSpacing(4)
+                .foregroundStyle(.gray)
             Spacer()
         }
     }

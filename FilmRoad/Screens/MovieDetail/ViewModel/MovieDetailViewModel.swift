@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class MovieDetailViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
@@ -23,10 +24,24 @@ final class MovieDetailViewModel: ObservableObject {
     
     private func transform() {
         input.viewOnAppear.sink { [weak self] _ in
-            guard let self else { return }
-            
+            guard let self, let tv = self.tv else { return }
+            Task {
+                let tvInfo = await self.fetchTVInfo()
+                print(tvInfo)
+                self.output.tvInfoModel = tvInfo
+            }
         }
         .store(in: &cancellables)
+    }
+    
+    private func fetchTVInfo() async -> TVInfoResponseModel? {
+        guard let tv else { return nil }
+        do {
+            let tvInfoModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVInfoResponseModel.self, router: TMDBRouter.tvInfo(id: tv.id))
+            return tvInfoModel
+        } catch {
+            return nil
+        }
     }
 }
 
@@ -36,6 +51,7 @@ extension MovieDetailViewModel {
         var viewOnAppear = PassthroughSubject<Void, Never>()
     }
     struct Output {
+        var tvInfoModel: TVInfoResponseModel?
     }
     
     enum Action {

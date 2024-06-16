@@ -14,20 +14,51 @@ struct MovieDetailView: View {
         ZStack {
             Color(.black)
                 .ignoresSafeArea()
-            
-            VStack {
-                posterImage(tv: viewModel.tv)
-                VStack(spacing: 6) {
-                    tvText(name: viewModel.tv?.name)
-                    descriptionText(viewModel.output.tvInfoModel?.overview)
+            ScrollView {
+                VStack {
+                    posterImage(tv: viewModel.tv)
+                    VStack(alignment: .leading, spacing: 6) {
+                        tvText(name: viewModel.tv?.name)
+                        descriptionText(viewModel.output.tvInfoModel?.overview)
+                        HStack(spacing: 6) {
+                            videoCountText(numberOfCount: viewModel.output.tvInfoModel?.numberOfSeasons, name: "시즌")
+                            videoCountText(numberOfCount: viewModel.output.tvInfoModel?.numberOfEpisodes, name: "에피소드")
+                            Spacer()
+                        }
+                        creatorText(creatorList: viewModel.output.tvInfoModel?.createdBy)
+                    }
+                    .padding(.vertical, 4)
+                    .padding(.horizontal, 10)
+                    Spacer()
                 }
-                .padding(.vertical, 4)
-                .padding(.horizontal, 10)
-                Spacer()
             }
         }
         .task {
             viewModel.action(.viewOnAppear)
+        }
+    }
+    
+    func creatorText(creatorList: [Creater]?) -> some View {
+        if let creatorList {
+            let names = creatorList.map { $0.name }.joined(separator: ", ")
+            return Text("크리에이터: \(names)")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.gray)
+            
+        } else {
+            return Text("")
+                .foregroundStyle(.gray)
+        }
+    }
+    
+    func videoCountText(numberOfCount: Int?, name: String) -> some View {
+        if let numberOfCount {
+            Text("\(name) \(numberOfCount)개")
+                .font(.system(size: 12))
+                .foregroundStyle(.gray)
+        } else {
+            Text("")
+                .foregroundStyle(.gray)
         }
     }
     
@@ -44,8 +75,8 @@ struct MovieDetailView: View {
         HStack {
             Text(description ?? "")
                 .font(.system(size: 14))
-                .lineSpacing(4)
-                .foregroundStyle(.gray)
+                .lineSpacing(2)
+                .foregroundStyle(.white)
             Spacer()
         }
     }
@@ -57,8 +88,7 @@ struct MovieDetailView: View {
             } label: {
                 image
                     .resizable()
-                    .frame(height: 230)
-                    .scaledToFit()
+                    .frame(height: 200)
                     .overlay {
                         VStack(alignment: .center) {
                             Image(ImageString.playCircle)
@@ -73,7 +103,7 @@ struct MovieDetailView: View {
             } label: {
                 Rectangle()
                     .fill(.white.opacity(0.1))
-                    .frame(height: 230)
+                    .frame(height: 200)
             }
         }
     }

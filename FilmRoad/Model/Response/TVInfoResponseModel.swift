@@ -29,7 +29,7 @@ struct TVInfoResponseModel: Decodable {
     }
 }
 
-struct Creater: Decodable {
+struct Creater: Decodable, Hashable {
     let name: String
 }
 

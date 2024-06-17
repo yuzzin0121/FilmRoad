@@ -1,5 +1,5 @@
 //
-//  TVCellView.swift
+//  TVThumbnailView.swift
 //  FilmRoad
 //
 //  Created by 조유진 on 6/7/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TVCellView: View {
+struct TVThumbnailView: View {
     var tv: TV
     
     var body: some View {
@@ -38,7 +38,7 @@ struct TVCellView: View {
 }
 
 #Preview {
-    TVCellView(tv: 
+    TVThumbnailView(tv: 
                 TV(id: 244643,
                   name: "El amor no tiene receta",
                   originalName: "El amor no tiene receta",

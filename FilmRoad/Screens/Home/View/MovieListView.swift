@@ -76,7 +76,7 @@ struct MovieListView: View {
                     NavigationLink {
                         MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
                     } label: {
-                        TVCellView(tv: tv)
+                        TVThumbnailView(tv: tv)
                     }
                 }
             })

@@ -26,6 +26,9 @@ struct MovieDetailView: View {
                             Spacer()
                         }
                         creatorText(creatorList: viewModel.output.tvInfoModel?.createdBy)
+                        Spacer()
+                            .frame(height: 12)
+                        filterButtons()
                     }
                     .padding(.vertical, 4)
                     .padding(.horizontal, 10)
@@ -35,6 +38,25 @@ struct MovieDetailView: View {
         }
         .task {
             viewModel.action(.viewOnAppear)
+        }
+    }
+    
+    func filterButtons() -> some View {
+        HStack(spacing: 8) {
+            ForEach(TVInfoItem.allCases, id: \.self) { tvInfoItem in
+                Button {
+                    print(tvInfoItem.rawValue)
+                } label: {
+                    Text("\(tvInfoItem.title)")
+                        .foregroundStyle(.black)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 6)
+                        .background(.white)
+                        .clipShape(.rect(cornerRadius: 14))
+                        .font(.system(size: 16))
+                }
+                
+            }
         }
     }
     
@@ -105,6 +127,18 @@ struct MovieDetailView: View {
                     .fill(.white.opacity(0.1))
                     .frame(height: 200)
             }
+        }
+    }
+}
+
+struct SeasonCellView: View {
+    var body: some View {
+        HStack {
+            VStack {
+                
+            }
+            Spacer()
+            
         }
     }
 }

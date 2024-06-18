@@ -18,9 +18,12 @@ struct TVSeasonCellView: View {
         HStack {
             TVPosterImageView(posterURLString: season.posterPath)
             
-            VStack {
-                seasonNameText(name: season.name)
-                airDateText(airDate: season.airDate)
+            HStack {
+                VStack {
+                    seasonNameText(name: season.name)
+                    airDateText(airDate: season.airDate)
+                }
+                episodeCountText(count: season.episodeCount)
             }
         }
     }
@@ -36,4 +39,8 @@ struct TVSeasonCellView: View {
             .foregroundStyle(.gray)
     }
     
+    private func episodeCountText(count: Int) -> some View {
+        Text("에피소드 \(count)개")
+            .font(.system(size: 12))
+    }
 }

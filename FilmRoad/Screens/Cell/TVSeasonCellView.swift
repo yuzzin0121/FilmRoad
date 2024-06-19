@@ -23,6 +23,7 @@ struct TVSeasonCellView: View {
                     seasonNameText(name: season.name)
                     airDateText(airDate: season.airDate)
                 }
+                Spacer()
                 episodeCountText(count: season.episodeCount)
             }
         }

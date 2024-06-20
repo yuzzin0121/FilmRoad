@@ -33,7 +33,7 @@ struct Creater: Decodable, Hashable {
     let name: String
 }
 
-struct Season: Decodable {
+struct Season: Decodable, Hashable {
     let airDate: String
     let episodeCount: Int
     let id: Int

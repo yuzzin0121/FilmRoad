@@ -25,11 +25,11 @@ struct TVPosterImageView: View {
         AsyncImage(url: posterURL) { image in
             image
                 .resizable()
-                .frame(width: 140, height: 60)
+                .frame(width: 140, height: 80)
         } placeholder: {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.white.opacity(0.2))
-                .frame(width: 140, height: 60)
+                .frame(width: 140, height: 80)
             
         }
     }

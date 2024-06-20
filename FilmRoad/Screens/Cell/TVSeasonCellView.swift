@@ -19,7 +19,7 @@ struct TVSeasonCellView: View {
             TVPosterImageView(posterURLString: season.posterPath)
             
             HStack {
-                VStack {
+                VStack(alignment: .leading) {
                     seasonNameText(name: season.name)
                     airDateText(airDate: season.airDate)
                 }

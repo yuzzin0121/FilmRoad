@@ -29,6 +29,13 @@ struct MovieDetailView: View {
                         Spacer()
                             .frame(height: 12)
                         filterButtons()
+                        Spacer()
+                            .frame(height: 20)
+                        LazyVStack(spacing: 8) {
+                            ForEach(viewModel.output.seasonList, id: \.self) { season in
+                                TVSeasonCellView(season: season)
+                            }
+                        }
                     }
                     .padding(.vertical, 4)
                     .padding(.horizontal, 10)
@@ -131,14 +138,3 @@ struct MovieDetailView: View {
     }
 }
 
-struct SeasonCellView: View {
-    var body: some View {
-        HStack {
-            VStack {
-                
-            }
-            Spacer()
-            
-        }
-    }
-}

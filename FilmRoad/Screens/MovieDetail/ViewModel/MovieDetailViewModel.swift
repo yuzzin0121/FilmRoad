@@ -29,6 +29,8 @@ final class MovieDetailViewModel: ObservableObject {
                 let tvInfo = await self.fetchTVInfo()
                 print(tvInfo)
                 self.output.tvInfoModel = tvInfo
+                guard let seasonList = tvInfo?.seasons else { return }
+                self.output.seasonList = seasonList
             }
         }
         .store(in: &cancellables)
@@ -52,6 +54,7 @@ extension MovieDetailViewModel {
     }
     struct Output {
         var tvInfoModel: TVInfoResponseModel?
+        var seasonList: [Season] = []
     }
     
     enum Action {

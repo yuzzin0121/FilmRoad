@@ -33,6 +33,12 @@ struct Cast: Decodable, Identifiable {
         self.profilPath = try container.decodeIfPresent(String.self, forKey: .profilPath)
         self.roles = try container.decode([Role].self, forKey: .roles)
     }
+    init(knownForDepartment: String, name: String, profilPath: String?, roles: [Role]) {
+        self.knownForDepartment = knownForDepartment
+        self.name = name
+        self.profilPath = profilPath
+        self.roles = roles
+    }
 }
 
 struct Role: Decodable {

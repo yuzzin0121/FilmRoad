@@ -27,7 +27,6 @@ final class MovieDetailViewModel: ObservableObject {
             guard let self, let tv = self.tv else { return }
             Task {
                 let tvInfo = await self.fetchTVInfo()
-                print(tvInfo)
                 self.output.tvInfoModel = tvInfo
                 guard let seasonList = tvInfo?.seasons else { return }
                 self.output.seasonList = seasonList
@@ -73,6 +72,7 @@ final class MovieDetailViewModel: ObservableObject {
         do {
             let tvCastInfoModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVCastInfoModel.self, router: TMDBRouter.dramaCaseInfo(id: tv.id))
             output.castList = tvCastInfoModel.cast
+            print(output.castList)
         } catch {
             return
         }

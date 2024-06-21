@@ -31,24 +31,26 @@ struct MovieDetailView: View {
                         filterButtons()
                         Spacer()
                             .frame(height: 20)
-                        LazyVStack(spacing: 8) {
-                            switch viewModel.output.currentInfoIndex {
-                            case TVInfoItem.season.rawValue:
+                        
+                        switch viewModel.output.currentInfoIndex {
+                        case TVInfoItem.season.rawValue:
+                            LazyVStack(spacing: 8) {
                                 ForEach(viewModel.output.seasonList, id: \.self) { season in
                                     TVSeasonCellView(season: season)
                                 }
-                            case TVInfoItem.castInfo.rawValue:
-                                ForEach(viewModel.output.castList, id: \.id) { cast in
-                                    Text(cast.name)
-                                }
-                            case TVInfoItem.similarContents.rawValue:
-                                ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
-                                    TVThumbnailView(tv: similarTV)
-                                }
-                            default:
-                                EmptyView()
                             }
-                           
+                        case TVInfoItem.castInfo.rawValue:
+                            LazyVGrid(columns: Array(repeating: GridItem(), count: 4), content: {
+                                ForEach(viewModel.output.castList, id: \.id) { cast in
+                                    CastCellView(cast: cast)
+                                }
+                            })
+                        case TVInfoItem.similarContents.rawValue:
+                            ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
+                                TVThumbnailView(tv: similarTV)
+                            }
+                        default:
+                            EmptyView()
                         }
                     }
                     .padding(.vertical, 4)

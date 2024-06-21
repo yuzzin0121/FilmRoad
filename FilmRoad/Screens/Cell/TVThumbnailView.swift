@@ -8,32 +8,31 @@
 import SwiftUI
 
 struct TVThumbnailView: View {
+    var posterWitdh = (UIScreen.main.bounds.width - (12 * 3)) / 3
     var tv: TV
     
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + tv.posterPath)) { data in
-                switch data {
-                case .empty:
-                    ProgressView()
-                        .frame(height: 180)
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(height: 180)
-                        .clipShape(.rect(cornerRadius: 12))
-                case .failure(_):
-                    Image(ImageString.video)
-                        .frame(height: 180)
-                @unknown default:
-                    Image(ImageString.video)
-                        .frame(height: 180)
-                }
+        AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + tv.posterPath)) { data in
+            switch data {
+            case .empty:
+                ProgressView()
+                    .frame(width: posterWitdh, height: 180)
+            case .success(let image):
+                image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: posterWitdh, height: 180)
+                    .clipShape(.rect(cornerRadius: 12))
+            case .failure(_):
+                Image(ImageString.video)
+                    .frame(width: posterWitdh, height: 180)
+            @unknown default:
+                Image(ImageString.video)
+                    .frame(width: posterWitdh, height: 180)
             }
-            .scaledToFit()
-            .frame(height: 180)
         }
+        .scaledToFit()
+        .frame(width: posterWitdh, height: 180)
     }
 }
 

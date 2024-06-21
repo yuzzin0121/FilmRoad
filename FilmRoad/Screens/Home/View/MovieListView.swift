@@ -71,13 +71,12 @@ struct MovieListView: View {
     
     func sectionView(tvList: [TV]) -> some View {
         ScrollView(.horizontal) {
-            LazyHStack(spacing: 0, content: {
+            LazyHGrid(rows: [GridItem()], spacing: 10, content: {
                 ForEach(tvList, id: \.id) { tv in
                     NavigationLink {
                         MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
                     } label: {
                         TVThumbnailView(tv: tv)
-                            .frame(width: 140)
                     }
                 }
             })

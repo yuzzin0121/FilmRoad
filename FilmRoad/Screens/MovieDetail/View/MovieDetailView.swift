@@ -30,7 +30,7 @@ struct MovieDetailView: View {
                             .frame(height: 12)
                         filterButtons()
                         Spacer()
-                            .frame(height: 20)
+                            .frame(height: 8)
                         
                         switch viewModel.output.currentInfoIndex {
                         case TVInfoItem.season.rawValue:
@@ -46,9 +46,11 @@ struct MovieDetailView: View {
                                 }
                             })
                         case TVInfoItem.similarContents.rawValue:
-                            ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
-                                TVThumbnailView(tv: similarTV)
-                            }
+                            LazyVGrid(columns: Array(repeating: GridItem(), count: 3), content: {
+                                ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
+                                    TVThumbnailView(tv: similarTV)
+                                }
+                            })
                         default:
                             EmptyView()
                         }

@@ -16,23 +16,23 @@ struct TVThumbnailView: View {
                 switch data {
                 case .empty:
                     ProgressView()
-                        .frame(width: 140, height: 180)
+                        .frame(height: 180)
                 case .success(let image):
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 140, height: 180)
+                        .frame(height: 180)
                         .clipShape(.rect(cornerRadius: 12))
                 case .failure(_):
                     Image(ImageString.video)
-                        .frame(width: 140, height: 180)
+                        .frame(height: 180)
                 @unknown default:
                     Image(ImageString.video)
-                        .frame(width: 140, height: 180)
+                        .frame(height: 180)
                 }
             }
             .scaledToFit()
-            .frame(width: 140, height: 180)
+            .frame(height: 180)
         }
     }
 }

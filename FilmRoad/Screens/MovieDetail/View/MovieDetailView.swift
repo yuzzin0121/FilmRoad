@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
+    @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: MovieDetailViewModel
     
     var body: some View {
@@ -60,6 +61,15 @@ struct MovieDetailView: View {
                     Spacer()
                 }
             }
+            .navigationBarBackButtonHidden(true)    // default 버튼 지우기
+            .navigationBar {
+                Button{
+                    dismiss()
+                }label: {
+                    Image(ImageString.arrowLeft)
+                }
+            } trailing: { }
+            .foregroundStyle(.white)
         }
         .task {
             viewModel.action(.viewOnAppear)

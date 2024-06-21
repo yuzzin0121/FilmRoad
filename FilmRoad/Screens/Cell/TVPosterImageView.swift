@@ -8,28 +8,25 @@
 import SwiftUI
 
 struct TVPosterImageView: View {
-    var posterURLString: String? {
-        didSet {
-            guard let posterURLString else { return }
-            posterURL = URL(string: posterURLString)
-        }
-    }
     
     var posterURL: URL?
      
     init(posterURLString: String? = nil) {
-        self.posterURLString = posterURLString
+        guard let posterURLString else { return }
+        posterURL = URL(string: APIKey.basePosterURL.rawValue + posterURLString)
     }
     
     var body: some View {
         AsyncImage(url: posterURL) { image in
             image
                 .resizable()
-                .frame(width: 140, height: 80)
+                .frame(width: 140, height: 100)
+                .clipShape(.rect(cornerRadius: 8))
         } placeholder: {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.white.opacity(0.2))
-                .frame(width: 140, height: 80)
+                .frame(width: 140, height: 100)
+                .clipShape(.rect(cornerRadius: 8))
             
         }
     }

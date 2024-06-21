@@ -18,13 +18,18 @@ struct TVSeasonCellView: View {
         HStack {
             TVPosterImageView(posterURLString: season.posterPath)
             
-            HStack {
-                VStack(alignment: .leading) {
-                    seasonNameText(name: season.name)
-                    airDateText(airDate: season.airDate)
+            VStack {
+                Spacer()
+                    .frame(height: 6)
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        seasonNameText(name: season.name)
+                        airDateText(airDate: season.airDate)
+                    }
+                    Spacer()
+                    episodeCountText(count: season.episodeCount)
                 }
                 Spacer()
-                episodeCountText(count: season.episodeCount)
             }
         }
     }

@@ -32,9 +32,23 @@ struct MovieDetailView: View {
                         Spacer()
                             .frame(height: 20)
                         LazyVStack(spacing: 8) {
-                            ForEach(viewModel.output.seasonList, id: \.self) { season in
-                                TVSeasonCellView(season: season)
+                            switch viewModel.output.currentInfoIndex {
+                            case TVInfoItem.season.rawValue:
+                                ForEach(viewModel.output.seasonList, id: \.self) { season in
+                                    TVSeasonCellView(season: season)
+                                }
+                            case TVInfoItem.castInfo.rawValue:
+                                ForEach(viewModel.output.castList, id: \.id) { cast in
+                                    Text(cast.name)
+                                }
+                            case TVInfoItem.similarContents.rawValue:
+                                ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
+                                    TVThumbnailView(tv: similarTV)
+                                }
+                            default:
+                                EmptyView()
                             }
+                           
                         }
                     }
                     .padding(.vertical, 4)
@@ -52,15 +66,15 @@ struct MovieDetailView: View {
         HStack(spacing: 8) {
             ForEach(TVInfoItem.allCases, id: \.self) { tvInfoItem in
                 Button {
-                    print(tvInfoItem.rawValue)
+                    viewModel.action(.selectInfoIndex(index: tvInfoItem.rawValue))
                 } label: {
                     Text("\(tvInfoItem.title)")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(tvInfoItem.rawValue == viewModel.output.currentInfoIndex ? .black : .white)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 6)
-                        .background(.white)
+                        .background(tvInfoItem.rawValue == viewModel.output.currentInfoIndex ? .white : .darkGray)
                         .clipShape(.rect(cornerRadius: 14))
-                        .font(.system(size: 16))
+                        .font(.system(size: 15))
                 }
                 
             }

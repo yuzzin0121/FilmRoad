@@ -10,14 +10,29 @@ import SwiftUI
 struct SearchFilmView: View {
     @Environment(\.dismiss) var dismiss
     @State private var query: String = ""
+    @StateObject var viewModel = SearchViewModel()
     
     var body: some View {
         ZStack {
             Color(.black)
                 .ignoresSafeArea()
-            Text("SearchFilmView")
+            VStack {
+                Spacer()
+                    .frame(height: 12)
+                ScrollView {
+                    LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
+                        ForEach(viewModel.output.searchedTVList, id: \.id) { tv in
+                            NavigationLink {
+                                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
+                            } label: {
+                                TVThumbnailView(tv: tv)
+                            }
+                        }
+                    }
+                }
+            }
+            .searchable(text: $viewModel.query)
         }
-        .searchable(text: $query)
         .navigationBarBackButtonHidden(true)    // default 버튼 지우기
         .navigationBar {
             Button{

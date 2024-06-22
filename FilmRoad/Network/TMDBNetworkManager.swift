@@ -23,7 +23,6 @@ final class TMDBNetworkManager {
         let urlRequest = try router.asURLRequest()
         
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
-        
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw NetworkError.invalidResponse
         }
@@ -31,7 +30,6 @@ final class TMDBNetworkManager {
         guard let responseData = try? JSONDecoder().decode(T.self, from: data) else {
             throw NetworkError.invalidData
         }
-        print(responseData)
         return responseData
     }
 }

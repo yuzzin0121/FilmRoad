@@ -17,7 +17,7 @@ enum TMDBRouter {
     case similarTVRecommendation(id: Int)
     case dramaCaseInfo(id: Int)
     
-    case dramaSearch(query: String)
+    case tvSearch(query: String)
     case tvSeasonsDetails(seriesId: Int, seasonNumber: Int)
     
     case video(seriesId: Int)
@@ -41,7 +41,7 @@ extension TMDBRouter: TargetType {
         case .tvInfo(let id): return "/tv/\(id)"
         case .similarTVRecommendation(let id): return "/tv/\(id)/recommendations"
         case .dramaCaseInfo(let id): return "/tv/\(id)/aggregate_credits"
-        case .dramaSearch: return baseURL + "/search/tv"
+        case .tvSearch: return "search/tv"
         case .tvSeasonsDetails(let seriesId, let seasonNumber):
             return "/tv/\(seriesId)/season/\(seasonNumber)"
         case .video(let seriesId):
@@ -78,7 +78,7 @@ extension TMDBRouter: TargetType {
                 URLQueryItem(name: "language", value: "ko-KR"),
                 URLQueryItem(name: "page", value: String(1))
             ]
-        case .dramaSearch(query: let query):
+        case .tvSearch(query: let query):
             return [
                 URLQueryItem(name: "language", value: "ko-KR"),
                 URLQueryItem(name: "query", value: query)

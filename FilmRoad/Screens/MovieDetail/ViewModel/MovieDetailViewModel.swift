@@ -23,13 +23,12 @@ final class MovieDetailViewModel: ObservableObject {
     }
     
     private func transform() {
+        print(#function)
         input.viewOnAppear.sink { [weak self] _ in
             guard let self, let tv = self.tv else { return }
+            print("asdfhasjkdhfajksldhf")
             Task {
-                let tvInfo = await self.fetchTVInfo()
-                self.output.tvInfoModel = tvInfo
-                guard let seasonList = tvInfo?.seasons else { return }
-                self.output.seasonList = seasonList
+                await self.fetchTVInfo()
             }
         }
         .store(in: &cancellables)
@@ -56,13 +55,15 @@ final class MovieDetailViewModel: ObservableObject {
     }
     
     // TV 상세정보 조회
-    private func fetchTVInfo() async -> TVInfoResponseModel? {
-        guard let tv else { return nil }
+    private func fetchTVInfo() async {
+        guard let tv else { return }
         do {
             let tvInfoModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVInfoResponseModel.self, router: TMDBRouter.tvInfo(id: tv.id))
-            return tvInfoModel
+            print(tvInfoModel)
+            output.tvInfoModel = tvInfoModel
+            output.seasonList = tvInfoModel.seasons
         } catch {
-            return nil
+            return
         }
     }
     

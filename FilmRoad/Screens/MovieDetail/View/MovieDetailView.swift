@@ -49,7 +49,11 @@ struct MovieDetailView: View {
                         case TVInfoItem.similarContents.rawValue:
                             LazyVGrid(columns: Array(repeating: GridItem(), count: 3), content: {
                                 ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
-                                    TVThumbnailView(tv: similarTV)
+                                    NavigationLink {
+                                        MovieDetailView(viewModel: MovieDetailViewModel(tv: similarTV))
+                                    } label: {
+                                        TVThumbnailView(tv: similarTV)
+                                    }
                                 }
                             })
                         default:

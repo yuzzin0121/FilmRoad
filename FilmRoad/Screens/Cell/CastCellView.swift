@@ -19,8 +19,9 @@ struct CastCellView: View {
             Text(cast.name)
                 .font(.system(size: 13))
                 .foregroundStyle(.white)
+            Spacer()
         }
-        .frame(height: 120)
+        .frame(height: 130)
     }
 }
 

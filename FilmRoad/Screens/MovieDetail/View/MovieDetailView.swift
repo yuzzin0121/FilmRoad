@@ -17,7 +17,11 @@ struct MovieDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 VStack {
-                    posterImage(tv: viewModel.output.tv)
+                    NavigationLink {
+                        TVVideoView(viewModel: TVVideoViewModel(seriesId: viewModel.output.tvInfoModel?.id))
+                    } label: {
+                        posterImage(tv: viewModel.output.tv)
+                    }
                     VStack(alignment: .leading, spacing: 6) {
                         tvText(name: viewModel.output.tv?.name)
                         descriptionText(viewModel.output.tvInfoModel?.overview)
@@ -148,28 +152,20 @@ struct MovieDetailView: View {
     
     func posterImage(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
-            NavigationLink {
-               
-            } label: {
-                image
-                    .resizable()
-                    .frame(height: 200)
-                    .overlay {
-                        VStack(alignment: .center) {
-                            Image(ImageString.playCircle)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                        }
+            image
+                .resizable()
+                .frame(height: 200)
+                .overlay {
+                    VStack(alignment: .center) {
+                        Image(ImageString.playCircle)
+                            .resizable()
+                            .frame(width: 50, height: 50)
                     }
-            }
+                }
         } placeholder: {
-            NavigationLink {
-              
-            } label: {
-                Rectangle()
-                    .fill(.white.opacity(0.1))
-                    .frame(height: 200)
-            }
+            Rectangle()
+                .fill(.white.opacity(0.1))
+                .frame(height: 200)
         }
     }
 }

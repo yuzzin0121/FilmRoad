@@ -27,6 +27,7 @@ final class TMDBNetworkManager {
             throw NetworkError.invalidResponse
         }
         
+        
         guard let responseData = try? JSONDecoder().decode(T.self, from: data) else {
             throw NetworkError.invalidData
         }

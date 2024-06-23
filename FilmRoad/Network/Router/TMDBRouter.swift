@@ -34,18 +34,18 @@ extension TMDBRouter: TargetType {
     
     var path: String {
         switch self{
-        case .topRated: return "/tv/top_rated"
-        case .trend: return "/trending/tv/week"
-        case .popular: return "/tv/popular"
+        case .topRated: return "tv/top_rated"
+        case .trend: return "trending/tv/week"
+        case .popular: return "tv/popular"
             
-        case .tvInfo(let id): return "/tv/\(id)"
-        case .similarTVRecommendation(let id): return "/tv/\(id)/recommendations"
-        case .dramaCaseInfo(let id): return "/tv/\(id)/aggregate_credits"
+        case .tvInfo(let id): return "tv/\(id)"
+        case .similarTVRecommendation(let id): return "tv/\(id)/recommendations"
+        case .dramaCaseInfo(let id): return "tv/\(id)/aggregate_credits"
         case .tvSearch: return "search/tv"
         case .tvSeasonsDetails(let seriesId, let seasonNumber):
-            return "/tv/\(seriesId)/season/\(seasonNumber)"
+            return "tv/\(seriesId)/season/\(seasonNumber)"
         case .video(let seriesId):
-            return "/tv/\(seriesId)/videos"
+            return "tv/\(seriesId)/videos"
         }
     }
     

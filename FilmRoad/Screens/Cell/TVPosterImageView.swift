@@ -20,12 +20,12 @@ struct TVPosterImageView: View {
         AsyncImage(url: posterURL) { image in
             image
                 .resizable()
-                .frame(width: 140, height: 100)
+                .frame(width: 140, height: 95)
                 .clipShape(.rect(cornerRadius: 8))
         } placeholder: {
             RoundedRectangle(cornerRadius: 12)
                 .fill(.white.opacity(0.2))
-                .frame(width: 140, height: 100)
+                .frame(width: 140, height: 95)
                 .clipShape(.rect(cornerRadius: 8))
             
         }

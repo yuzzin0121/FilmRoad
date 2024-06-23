@@ -17,9 +17,9 @@ struct MovieDetailView: View {
                 .ignoresSafeArea()
             ScrollView {
                 VStack {
-                    posterImage(tv: viewModel.tv)
+                    posterImage(tv: viewModel.output.tv)
                     VStack(alignment: .leading, spacing: 6) {
-                        tvText(name: viewModel.tv?.name)
+                        tvText(name: viewModel.output.tv?.name)
                         descriptionText(viewModel.output.tvInfoModel?.overview)
                         HStack(spacing: 6) {
                             videoCountText(numberOfCount: viewModel.output.tvInfoModel?.numberOfSeasons, name: "시즌")
@@ -37,7 +37,11 @@ struct MovieDetailView: View {
                         case TVInfoItem.season.rawValue:
                             LazyVStack(spacing: 8) {
                                 ForEach(viewModel.output.seasonList, id: \.self) { season in
-                                    TVSeasonCellView(season: season)
+                                    NavigationLink {
+                                        EpisodeListView(viewModel: EpisodeListViewModel(seriesId: viewModel.output.tvInfoModel?.id, seasonNumber: season.seasonNumber))
+                                    } label: {
+                                        TVSeasonCellView(season: season)
+                                    }
                                 }
                             }
                         case TVInfoItem.castInfo.rawValue:

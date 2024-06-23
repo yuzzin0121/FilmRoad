@@ -39,8 +39,8 @@ struct TVSeasonCellView: View {
             .font(.system(size: 14))
     }
     
-    private func airDateText(airDate: String) -> some View {
-        Text(airDate)
+    private func airDateText(airDate: String?) -> some View {
+        Text(airDate ?? "")
             .font(.system(size: 12))
             .foregroundStyle(.gray)
     }

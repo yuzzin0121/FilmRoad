@@ -34,7 +34,7 @@ struct Creater: Decodable, Hashable {
 }
 
 struct Season: Decodable, Hashable {
-    let airDate: String
+    let airDate: String?
     let episodeCount: Int
     let id: Int
     let name: String

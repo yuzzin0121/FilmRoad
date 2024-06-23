@@ -14,21 +14,28 @@ final class MovieDetailViewModel: ObservableObject {
     
     var input = Input()
     @Published var output = Output()
-    @Published var tv: TV?
-    
     
     init(tv: TV?) {
-        self.tv = tv
         transform()
+        input.tv.send(tv)
     }
     
     private func transform() {
         print(#function)
-        input.viewOnAppear.sink { [weak self] _ in
-            guard let self, let tv = self.tv else { return }
-            print("asdfhasjkdhfajksldhf")
+        input.tv
+            .sink { [weak self] tv in
+                guard let self else { return }
+                output.tv = tv
+            }
+            .store(in: &cancellables)
+        
+        input.viewOnAppear
+            .combineLatest(input.tv)
+            .sink { [weak self] tv in
+            guard let self else { return }
+            let (_, tv) = tv
             Task {
-                await self.fetchTVInfo()
+                await self.fetchTVInfo(tv: tv)
             }
         }
         .store(in: &cancellables)
@@ -55,14 +62,15 @@ final class MovieDetailViewModel: ObservableObject {
     }
     
     // TV 상세정보 조회
-    private func fetchTVInfo() async {
+    private func fetchTVInfo(tv: TV?) async {
+        print(#function)
         guard let tv else { return }
         do {
             let tvInfoModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVInfoResponseModel.self, router: TMDBRouter.tvInfo(id: tv.id))
-            print(tvInfoModel)
             output.tvInfoModel = tvInfoModel
             output.seasonList = tvInfoModel.seasons
         } catch {
+            print(error)
             return
         }
     }
@@ -73,7 +81,6 @@ final class MovieDetailViewModel: ObservableObject {
         do {
             let tvCastInfoModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVCastInfoModel.self, router: TMDBRouter.dramaCaseInfo(id: tv.id))
             output.castList = tvCastInfoModel.cast
-            print(output.castList)
         } catch {
             return
         }
@@ -93,11 +100,12 @@ final class MovieDetailViewModel: ObservableObject {
 
 extension MovieDetailViewModel {
     struct Input {
-        var tv: TV?
+        var tv = PassthroughSubject<TV?, Never>()
         var viewOnAppear = PassthroughSubject<Void, Never>()
         var selectedInfoIndex = PassthroughSubject<Int, Never>()
     }
     struct Output {
+        var tv: TV?
         var tvInfoModel: TVInfoResponseModel?
         var currentInfoIndex: Int = 0
         var seasonList: [Season] = []

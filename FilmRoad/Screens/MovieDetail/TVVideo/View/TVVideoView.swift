@@ -29,5 +29,10 @@ struct TVVideoView: View {
         .task {
             viewModel.action(.viewOnAppear)
         }
+        .alert(isPresented: $viewModel.output.showAlert) {
+            Alert(title: Text("해당 TV는 티저가 존재하지 않습니다"), dismissButton: .default(Text("OK")) {
+                dismiss()
+            })
+        }
     }
 }

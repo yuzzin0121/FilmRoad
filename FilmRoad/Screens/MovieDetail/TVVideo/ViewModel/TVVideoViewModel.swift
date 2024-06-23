@@ -48,6 +48,7 @@ final class TVVideoViewModel: ObservableObject {
             return urlString
         } else {
             print("비디오 없음")
+            output.showAlert = true
             return nil
         }
     }
@@ -60,6 +61,7 @@ extension TVVideoViewModel {
     }
     struct Output {
         var videoURL: String?
+        var showAlert: Bool = false
     }
     
     enum Action {

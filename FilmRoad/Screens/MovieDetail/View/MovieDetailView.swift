@@ -23,7 +23,11 @@ struct MovieDetailView: View {
                         posterImage(tv: viewModel.output.tv)
                     }
                     VStack(alignment: .leading, spacing: 6) {
-                        tvText(name: viewModel.output.tv?.name)
+                        HStack {
+                            tvText(name: viewModel.output.tv?.name)
+                            Spacer()
+                            bookmarkButton(isBookmarked: viewModel.output.tv?.isBookmarked)
+                        }
                         descriptionText(viewModel.output.tvInfoModel?.overview)
                         HStack(spacing: 6) {
                             videoCountText(numberOfCount: viewModel.output.tvInfoModel?.numberOfSeasons, name: "시즌")
@@ -86,6 +90,23 @@ struct MovieDetailView: View {
         .task {
             viewModel.action(.viewOnAppear)
         }
+    }
+    
+    func bookmarkButton(isBookmarked: Bool?) -> some View {
+        guard let isBookmarked else {
+            return Image(.bookmark)
+                    .resizable()
+                    .frame(width: 18, height: 22)
+                    .foregroundStyle(.darkGray)
+                    .wrapToButton {}
+        }
+        return Image(.bookmark)
+            .resizable()
+            .frame(width: 18, height: 22)
+            .foregroundStyle(isBookmarked ? .white : .darkGray)
+            .wrapToButton {
+                viewModel.action(.setBookmark)
+            }
     }
     
     func filterButtons() -> some View {

@@ -25,6 +25,7 @@ struct TV: Decodable, Identifiable, Hashable {
     let originalName: String
     let posterPath: String
     let backdropPath: String
+    var isBookmarked: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case id

@@ -30,14 +30,22 @@ final class MovieDetailViewModel: ObservableObject {
         
         input.viewOnAppear
             .combineLatest(input.tv)
-            .sink { [weak self] tv in
+            .sink { [weak self] (_, tv) in
             guard let self else { return }
-            let (_, tv) = tv
             Task {
                 await self.fetchTVInfo(tv: tv)
             }
         }
         .store(in: &cancellables)
+        
+        input.setBookmark
+            .combineLatest(input.tv)
+            .sink { [weak self] (_, tv) in
+                guard let self, var tv else { return }
+                tv.isBookmarked.toggle()
+                input.tv.send(tv)
+            }
+            .store(in: &cancellables)
         
         input.selectedInfoIndex.sink { [weak self] selectedIndex in
             guard let self else { return }
@@ -100,6 +108,7 @@ extension MovieDetailViewModel {
         var tv = PassthroughSubject<TV?, Never>()
         var viewOnAppear = PassthroughSubject<Void, Never>()
         var selectedInfoIndex = PassthroughSubject<Int, Never>()
+        var setBookmark = PassthroughSubject<Void, Never>()
     }
     struct Output {
         var tv: TV?
@@ -113,6 +122,7 @@ extension MovieDetailViewModel {
     enum Action {
         case viewOnAppear
         case selectInfoIndex(index: Int)
+        case setBookmark
     }
     
     func action(_ action: Action) {
@@ -121,6 +131,8 @@ extension MovieDetailViewModel {
             input.viewOnAppear.send(())
         case .selectInfoIndex(let index):
             input.selectedInfoIndex.send(index)
+        case .setBookmark:
+            input.setBookmark.send(())
         }
     }
 }

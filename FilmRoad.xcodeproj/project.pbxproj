@@ -136,8 +136,8 @@
 			children = (
 				617E44F52C2853180030678D /* TVVideo */,
 				617E44EA2C275D0D0030678D /* EpisodeList */,
-				6109A3052C1336D300B5E7A2 /* ViewModel */,
 				6109A3022C1336B700B5E7A2 /* View */,
+				6109A3052C1336D300B5E7A2 /* ViewModel */,
 			);
 			path = MovieDetail;
 			sourceTree = "<group>";

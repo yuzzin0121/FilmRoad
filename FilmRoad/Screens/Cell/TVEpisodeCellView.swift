@@ -53,6 +53,7 @@ struct TVEpisodeCellView: View {
     private func overviewText(overview: String) -> some View {
         Text(overview)
             .font(.system(size: 13))
+            .foregroundStyle(.gray)
     }
 }
 

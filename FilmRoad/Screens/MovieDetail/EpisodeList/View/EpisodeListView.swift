@@ -16,7 +16,7 @@ struct EpisodeListView: View {
             Color(.black)
                 .ignoresSafeArea()
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: 12) {
+                LazyVStack(alignment: .leading, spacing: 6) {
                     ForEach(viewModel.output.episodeList, id: \.self) { episode in
                         TVEpisodeCellView(episode: episode)
                     }

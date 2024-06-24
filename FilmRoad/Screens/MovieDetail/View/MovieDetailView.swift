@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct MovieDetailView: View {
+struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
     @Environment(\.dismiss) var dismiss
-    @StateObject var viewModel: MovieDetailViewModel
+    @StateObject var viewModel: MovieDetailViewModel<Repo>
     
     var body: some View {
         ZStack {
@@ -62,7 +62,7 @@ struct MovieDetailView: View {
                             LazyVGrid(columns: Array(repeating: GridItem(), count: 3), content: {
                                 ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
                                     NavigationLink {
-                                        MovieDetailView(viewModel: MovieDetailViewModel(tv: similarTV))
+                                        MovieDetailView(viewModel: MovieDetailViewModel(tv: similarTV, repository: BookmarkedTVRepository() as! Repo))
                                     } label: {
                                         TVThumbnailView(tv: similarTV)
                                     }

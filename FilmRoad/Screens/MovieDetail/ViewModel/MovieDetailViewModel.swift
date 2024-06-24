@@ -9,14 +9,17 @@ import Foundation
 import Combine
 
 @MainActor
-final class MovieDetailViewModel: ObservableObject {
+final class MovieDetailViewModel<Repo: Repository>: ObservableObject where Repo.ITEM == BookmarkedTV {
     var cancellables = Set<AnyCancellable>()
     
     var input = Input()
     @Published var output = Output()
+    private let repository: Repo
     
-    init(tv: TV?) {
+    init(tv: TV?, repository: Repo){
+        self.repository = repository
         transform()
+        let tv = setBookmark(tv: tv)
         input.tv.send(tv)
     }
     
@@ -44,6 +47,7 @@ final class MovieDetailViewModel: ObservableObject {
                 guard let self, var tv else { return }
                 tv.isBookmarked.toggle()
                 input.tv.send(tv)
+                self.toggleBookmark(tv: tv)
             }
             .store(in: &cancellables)
         
@@ -66,6 +70,22 @@ final class MovieDetailViewModel: ObservableObject {
             }
         }
         .store(in: &cancellables)
+    }
+    
+    private func setBookmark(tv: TV?) -> TV? {
+        guard var tv else { return nil }
+        let isExist = repository.isExist(id: tv.id)
+        tv.isBookmarked = isExist
+        return tv
+    }
+    
+    private func toggleBookmark(tv: TV) {
+        if tv.isBookmarked {    // 북마크에 등록했을 경우
+            let bookmarkedTV = BookmarkedTV(id: tv.id, name: tv.name, originalName: tv.originalName, posterPath: tv.posterPath, backdropPath: tv.backdropPath)
+            repository.createItem(data: bookmarkedTV)
+        } else {
+            repository.deleteItem(id: tv.id)
+        }
     }
     
     // TV 상세정보 조회

@@ -36,7 +36,7 @@ struct MovieListView: View {
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
             NavigationLink {
-                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
+                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
             } label: {
                 image
                     .resizable()
@@ -57,7 +57,7 @@ struct MovieListView: View {
             }
         } placeholder: {
             NavigationLink {
-                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
+                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
             } label: {
                 Rectangle()
                     .fill(.white.opacity(0.1))
@@ -74,7 +74,7 @@ struct MovieListView: View {
             LazyHGrid(rows: [GridItem()], spacing: 10, content: {
                 ForEach(tvList, id: \.id) { tv in
                     NavigationLink {
-                        MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
+                        MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
                     } label: {
                         TVThumbnailView(tv: tv)
                     }

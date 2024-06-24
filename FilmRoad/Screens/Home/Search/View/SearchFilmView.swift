@@ -23,7 +23,7 @@ struct SearchFilmView: View {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                         ForEach(viewModel.output.searchedTVList, id: \.id) { tv in
                             NavigationLink {
-                                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv))
+                                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
                             } label: {
                                 TVThumbnailView(tv: tv)
                             }

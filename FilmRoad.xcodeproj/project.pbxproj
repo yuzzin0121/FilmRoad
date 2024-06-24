@@ -54,6 +54,7 @@
 		617E450F2C2978100030678D /* BookmarkedTVRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E450E2C2978100030678D /* BookmarkedTVRepository.swift */; };
 		617E45112C2978F80030678D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45102C2978F80030678D /* Repository.swift */; };
 		617E45142C29890E0030678D /* MyBookmarkListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45132C29890E0030678D /* MyBookmarkListViewModel.swift */; };
+		617E45162C2994D90030678D /* BookmarkedTVCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45152C2994D90030678D /* BookmarkedTVCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		617E450E2C2978100030678D /* BookmarkedTVRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedTVRepository.swift; sourceTree = "<group>"; };
 		617E45102C2978F80030678D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		617E45132C29890E0030678D /* MyBookmarkListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookmarkListViewModel.swift; sourceTree = "<group>"; };
+		617E45152C2994D90030678D /* BookmarkedTVCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedTVCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				617E44E02C20843B0030678D /* TVPosterImageView.swift */,
 				617E44E82C25C3110030678D /* CastCellView.swift */,
 				617E44F32C2847D90030678D /* TVEpisodeCellView.swift */,
+				617E45152C2994D90030678D /* BookmarkedTVCellView.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				6173C5082C12D4000089E1E6 /* NavigationBarWrapper.swift in Sources */,
 				617E44DD2C1F03AF0030678D /* TVInfoItem.swift in Sources */,
 				612AA1D62C12C0DF00A7B1F5 /* TabItem.swift in Sources */,
+				617E45162C2994D90030678D /* BookmarkedTVCellView.swift in Sources */,
 				617E44DB2C1DD7710030678D /* TVInfoResponseModel.swift in Sources */,
 				612AA1C72C12AE2700A7B1F5 /* MyBookmarkListView.swift in Sources */,
 				617E44FB2C28534E0030678D /* TVVideoViewModel.swift in Sources */,

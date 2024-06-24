@@ -44,11 +44,12 @@ struct TV: Decodable, Identifiable, Hashable {
         self.backdropPath = try container.decodeIfPresent(String.self, forKey: .backdropPath) ?? ""
     }
     
-    init(id: Int, name: String, originalName: String, posterPath: String, backdropPath: String) {
+    init(id: Int, name: String, originalName: String, posterPath: String, backdropPath: String, isBookmarked: Bool = false) {
         self.id = id
         self.name = name
         self.originalName = originalName
         self.posterPath = posterPath
         self.backdropPath = backdropPath
+        self.isBookmarked = isBookmarked
     }
 }

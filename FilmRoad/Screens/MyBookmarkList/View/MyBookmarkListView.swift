@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MyBookmarkListView: View {
+    @StateObject var viewModel: MyBookmarkListViewModel = MyBookmarkListViewModel(repository: BookmarkedTVRepository())
     
     init() {
         let coloredAppearance = UINavigationBarAppearance()
@@ -24,8 +25,16 @@ struct MyBookmarkListView: View {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
-                LazyVStack {
-                    
+                VStack {
+                    Spacer()
+                        .frame(height: 12)
+                    ScrollView {
+                        LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
+                            ForEach(viewModel.output.bookmarkedTVList, id: \.id) { tv in
+                                bookmarkedTV(tv: tv)
+                            }
+                        }
+                    }
                 }
             }
             .navigationBar {
@@ -34,9 +43,27 @@ struct MyBookmarkListView: View {
             } trailing: {}
         }
         .foregroundStyle(.white)
+        .task {
+            viewModel.action(.viewOnAppear)
+        }
     }
-}
-
-#Preview {
-    MyBookmarkListView()
+    
+    private func bookmarkedTV(tv: TV) -> some View {
+        TVThumbnailView(tv: tv)
+            .overlay {
+                VStack {
+                    HStack {
+                        Spacer()
+                        Image(ImageString.bookmark)
+                            .resizable()
+                            .frame(width: 18, height: 22)
+                            .wrapToButton {
+                                viewModel.action(.bookmarkButtonTap(tvId: tv.id))
+                            }
+                            .padding(10)
+                    }
+                    Spacer()
+                }
+            }
+    }
 }

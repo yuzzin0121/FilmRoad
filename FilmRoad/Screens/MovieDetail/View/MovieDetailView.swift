@@ -78,13 +78,15 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
                 }
             }
             .navigationBarBackButtonHidden(true)    // default 버튼 지우기
-            .navigationBar {
+            .navigationBar(title: {
+            }, leading: {
                 Button{
                     dismiss()
                 }label: {
                     Image(ImageString.arrowLeft)
                 }
-            } trailing: { }
+            }, trailing: {
+            })
             .foregroundStyle(.white)
         }
         .task {

@@ -41,10 +41,12 @@ struct MyBookmarkListView: View {
                     }
                 }
             }
-            .navigationBar {
+            .navigationBar(title: {
+            }, leading: {
                 Text("Bookmark")
                     .font(.title).bold()
-            } trailing: {}
+            }, trailing: {
+            })
         }
         .foregroundStyle(.white)
         .task {

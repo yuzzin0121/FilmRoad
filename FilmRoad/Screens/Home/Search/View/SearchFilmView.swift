@@ -34,13 +34,15 @@ struct SearchFilmView: View {
             .searchable(text: $viewModel.query)
         }
         .navigationBarBackButtonHidden(true)    // default 버튼 지우기
-        .navigationBar {
+        .navigationBar(title: {
+        }, leading: {
             Button{
                 dismiss()
             }label: {
                 Image(ImageString.arrowLeft)
             }
-        } trailing: { }
+        }, trailing: {
+        })
         .foregroundStyle(.white)
     }
 }

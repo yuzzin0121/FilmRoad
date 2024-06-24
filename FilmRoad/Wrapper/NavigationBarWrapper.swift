@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-private struct NavigationBarWrapper<L: View, T: View>: ViewModifier {
+private struct NavigationBarWrapper<Title: View, L: View, T: View>: ViewModifier {
+    let title: Title
     let leading: L
     let trailing: T
     
-    init(leading: () -> L, trailing: () -> T) {
+    init(title: () -> Title, leading: () -> L, trailing: () -> T) {
+        self.title = title()
         self.leading = leading()
         self.trailing = trailing()
     }
@@ -19,6 +21,9 @@ private struct NavigationBarWrapper<L: View, T: View>: ViewModifier {
     func body(content: Content) -> some View {
         content
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    title
+                }
                 ToolbarItem(placement: .topBarLeading) {
                     leading
                 }
@@ -30,7 +35,7 @@ private struct NavigationBarWrapper<L: View, T: View>: ViewModifier {
 }
 
 extension View {
-    func navigationBar(@ViewBuilder leading: () -> some View, @ViewBuilder trailing: () -> some View) -> some View {
-        modifier(NavigationBarWrapper(leading: leading, trailing: trailing))
+    func navigationBar(@ViewBuilder title: () -> some View, @ViewBuilder leading: () -> some View, @ViewBuilder trailing: () -> some View) -> some View {
+        modifier(NavigationBarWrapper(title: title, leading: leading, trailing: trailing))
     }
 }

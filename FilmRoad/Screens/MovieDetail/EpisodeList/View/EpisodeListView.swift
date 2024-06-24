@@ -24,13 +24,15 @@ struct EpisodeListView: View {
             }
         }
         .navigationBarBackButtonHidden(true)    // default 버튼 지우기
-        .navigationBar {
+        .navigationBar(title: {
+        }, leading: {
             Button{
                 dismiss()
             }label: {
                 Image(ImageString.arrowLeft)
             }
-        } trailing: { }
+        }, trailing: {
+        })
         .task {
             viewModel.action(.viewOnAppear)
         }

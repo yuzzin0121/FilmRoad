@@ -51,18 +51,17 @@ struct MovieListView: View {
                     .padding(.leading)
                 }
             }
-            .navigationBar {
+            .navigationBar(title: {
+            }, leading: {
                 Text("FilmRoad")
                     .font(.title).bold()
-            } trailing: {
+            }, trailing: {
                 NavigationLink {
                     SearchFilmView()
                 } label: {
                     Image(ImageString.search)
                 }
-
-            }
-
+            })
         }
         .foregroundStyle(.white)
         .task {

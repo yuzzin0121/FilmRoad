@@ -59,6 +59,8 @@
 		617E451B2C29CF330030678D /* ProfileRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E451A2C29CF330030678D /* ProfileRealmModel.swift */; };
 		617E451D2C29D1040030678D /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E451C2C29D1040030678D /* ProfileRepository.swift */; };
 		617E451F2C29EA4C0030678D /* SubTitleFontWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E451E2C29EA4C0030678D /* SubTitleFontWrapper.swift */; };
+		617E45242C29F4180030678D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45232C29F4180030678D /* EditProfileView.swift */; };
+		617E45262C29F4660030678D /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45252C29F4660030678D /* EditProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,8 @@
 		617E451A2C29CF330030678D /* ProfileRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRealmModel.swift; sourceTree = "<group>"; };
 		617E451C2C29D1040030678D /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		617E451E2C29EA4C0030678D /* SubTitleFontWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubTitleFontWrapper.swift; sourceTree = "<group>"; };
+		617E45232C29F4180030678D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		617E45252C29F4660030678D /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +521,7 @@
 		617E45212C29F3C90030678D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				617E45252C29F4660030678D /* EditProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -524,6 +529,7 @@
 		617E45222C29F3CE0030678D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				617E45232C29F4180030678D /* EditProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,11 +633,13 @@
 				617E44F02C275D500030678D /* EpisodeListViewModel.swift in Sources */,
 				612AA1D12C12AEC000A7B1F5 /* TabItemModifier.swift in Sources */,
 				612AA1CA2C12AE3900A7B1F5 /* MyProfileView.swift in Sources */,
+				617E45242C29F4180030678D /* EditProfileView.swift in Sources */,
 				612AA1D82C12C6E200A7B1F5 /* ButtonWrapper.swift in Sources */,
 				6109A3042C1336C500B5E7A2 /* MovieDetailView.swift in Sources */,
 				617E44FF2C288D2F0030678D /* VideoResponseModel.swift in Sources */,
 				617E451F2C29EA4C0030678D /* SubTitleFontWrapper.swift in Sources */,
 				6173C50D2C12FC740089E1E6 /* TMDBNetworkManager.swift in Sources */,
+				617E45262C29F4660030678D /* EditProfileViewModel.swift in Sources */,
 				6173C50B2C12D9E10089E1E6 /* SearchViewModel.swift in Sources */,
 				617E45192C29CA6B0030678D /* MyProfileViewModel.swift in Sources */,
 				612AA1DC2C12CF8D00A7B1F5 /* SearchFilmView.swift in Sources */,

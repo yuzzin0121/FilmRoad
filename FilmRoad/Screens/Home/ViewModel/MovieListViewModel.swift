@@ -19,7 +19,7 @@ final class MovieListViewModel: ObservableObject {
         transform()
     }
     
-    func transform() {
+    private func transform() {
         input.viewOnAppear
             .sink { [weak self] in
                 guard let self else { return }

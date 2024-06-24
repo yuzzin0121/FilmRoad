@@ -33,6 +33,43 @@ struct MovieListView: View {
         UINavigationBar.appearance().compactAppearance = coloredAppearance
     }
     
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(.black)
+                    .ignoresSafeArea()
+            
+                ScrollView {
+                    randomTV(tv: viewModel.output.randomTV)
+                    
+                    LazyVStack(alignment: .leading) {
+                        ForEach(Array(viewModel.output.tvTotalList.enumerated()), id: \.element) { index, tvList in
+                            Text(MovieSection(rawValue: index)!.title).bold()
+                            sectionView(tvList: tvList)
+                        }
+                    }
+                    .padding(.leading)
+                }
+            }
+            .navigationBar {
+                Text("FilmRoad")
+                    .font(.title).bold()
+            } trailing: {
+                NavigationLink {
+                    SearchFilmView()
+                } label: {
+                    Image(ImageString.search)
+                }
+
+            }
+
+        }
+        .foregroundStyle(.white)
+        .task {
+            viewModel.action(.viewOnAppear)
+        }
+    }
+    
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
             NavigationLink {
@@ -82,43 +119,6 @@ struct MovieListView: View {
             })
         }
         .padding(.bottom, 20)
-    }
-    
-    var body: some View {
-        NavigationStack {
-            ZStack {
-                Color(.black)
-                    .ignoresSafeArea()
-            
-                ScrollView {
-                    randomTV(tv: viewModel.output.randomTV)
-                    
-                    LazyVStack(alignment: .leading) {
-                        ForEach(Array(viewModel.output.tvTotalList.enumerated()), id: \.element) { index, tvList in
-                            Text(MovieSection(rawValue: index)!.title).bold()
-                            sectionView(tvList: tvList)
-                        }
-                    }
-                    .padding(.leading)
-                }
-            }
-            .navigationBar {
-                Text("FilmRoad")
-                    .font(.title).bold()
-            } trailing: {
-                NavigationLink {
-                    SearchFilmView()
-                } label: {
-                    Image(ImageString.search)
-                }
-
-            }
-
-        }
-        .foregroundStyle(.white)
-        .task {
-            viewModel.action(.viewOnAppear)
-        }
     }
 }
 

@@ -26,7 +26,7 @@ struct MainTabView: View {
                 .customTabItem(selection == 0 ? TabItem.home.selectedImage : TabItem.home.image, TabItem.home.title)
                 .tag(0)
             
-            MyListView()
+            MyBookmarkListView()
                 .customTabItem(selection == 1 ? TabItem.myList.selectedImage : TabItem.myList.image, TabItem.myList.title)
                 .tag(1)
             

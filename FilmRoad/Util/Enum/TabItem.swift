@@ -15,7 +15,7 @@ enum TabItem {
     var title: String {
         switch self {
         case .home: return "홈"
-        case .myList: return "내 리스트"
+        case .myList: return "내 북마크"
         case .profile: return "프로필"
         }
     }

@@ -30,7 +30,7 @@ struct MainTabView: View {
                 .customTabItem(selection == 1 ? TabItem.myList.selectedImage : TabItem.myList.image, TabItem.myList.title)
                 .tag(1)
             
-            MyProfileView()
+            MyProfileView(viewModel: MyProfileViewModel(repository: ProfileRepository()))
                 .customTabItem(selection == 2 ? TabItem.profile.selectedImage : TabItem.profile.image, TabItem.profile.title)
                 .tag(2)
         }

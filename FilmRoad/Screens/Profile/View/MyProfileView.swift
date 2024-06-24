@@ -7,12 +7,100 @@
 
 import SwiftUI
 
-struct MyProfileView: View {
+struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmModel {
+    @StateObject var viewModel: MyProfileViewModel<Repo>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ZStack {
+                Color(.black)
+                    .ignoresSafeArea()
+                VStack {
+                    Spacer()
+                        .frame(height: 40)
+                    HStack {
+                        Spacer()
+                            .frame(width: 10)
+                        VStack(spacing: 4) {
+                            profileImage(data: viewModel.output.profile?.profileImageData)
+                            NavigationLink {
+                                
+                            } label: {
+                                editProfileButton()
+                            }
+                            Spacer()
+                        }
+                        Spacer()
+                            .frame(width: 20)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Spacer()
+                                .frame(height: 1)
+                            nicknameText(nickname: viewModel.output.profile?.nickname ?? "닉네임 없음")
+                            Spacer()
+                                .frame(height: 4)
+                            Text("이메일 \(viewModel.output.profile?.email ?? "")")
+                                .subTitleFont()
+                            genderText(isMale: viewModel.output.profile?.isMale)
+                            Text("전화번호 \(viewModel.output.profile?.phoneNumber ?? "")")
+                                .subTitleFont()
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                    Spacer()
+                }
+            }
+            .navigationBar {
+                Text("Profile")
+                    .font(.title).bold()
+            } trailing: {}
+        }
+        .foregroundStyle(.white)
+        .task {
+            viewModel.action(.viewOnAppear)
+        }
     }
-}
-
-#Preview {
-    MyProfileView()
+    
+    private func profileImage(data: Data?) -> some View {
+        if let data, let uiImage = UIImage(data: data) {
+            return Image(uiImage: uiImage)
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+        } else {
+            return Image(ImageString.defaultProfile)
+                .resizable()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+        }
+    }
+    
+    private func editProfileButton() -> some View {
+        Text("프로필 편집")
+            .font(.system(size: 15))
+            .foregroundStyle(.white)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .overlay {
+                RoundedRectangle(cornerRadius: 4)
+                    .stroke(.white, lineWidth: 1)
+            }
+            .padding()
+    }
+    
+    private func nicknameText(nickname: String?) -> some View {
+        Text(nickname ?? "닉네임 없음")
+            .font(.system(size: 19)).bold()
+            
+    }
+    
+    private func genderText(isMale: Bool?) -> some View {
+        guard let isMale else {
+            return Text("성별")
+                .subTitleFont()
+        }
+        
+        return Text("성별 \(isMale ? "남" : "여")")
+            .subTitleFont()
+    }
 }

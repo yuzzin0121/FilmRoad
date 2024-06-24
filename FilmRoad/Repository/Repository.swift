@@ -14,5 +14,6 @@ protocol Repository: AnyObject {
     func fetchItem() -> [ITEM]
     func deleteItem(id: Int)
     func createItem(data: ITEM)
+    func updateItem(data: ITEM)
     func isExist(id: Int) -> Bool
 }

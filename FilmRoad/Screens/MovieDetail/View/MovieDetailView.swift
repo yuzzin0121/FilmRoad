@@ -175,7 +175,7 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
             image
                 .resizable()
-                .frame(height: 200)
+                .frame(height: 210)
                 .overlay {
                     VStack(alignment: .center) {
                         Image(ImageString.playCircle)
@@ -186,7 +186,7 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
         } placeholder: {
             Rectangle()
                 .fill(.white.opacity(0.1))
-                .frame(height: 200)
+                .frame(height: 210)
         }
     }
 }

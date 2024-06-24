@@ -1,18 +1,21 @@
 //
-//  BookmarkedTVRepository.swift
+//  ProfileRepository.swift
 //  FilmRoad
 //
-//  Created by 조유진 on 6/24/24.
+//  Created by 조유진 on 6/25/24.
 //
 
 import Foundation
 import RealmSwift
 
-final class BookmarkedTVRepository: Repository {
-    
-    typealias ITEM = BookmarkedTV
+final class ProfileRepository: Repository {
+    typealias ITEM = ProfileRealmModel
     
     private let realm = try! Realm()
+    
+    init() {
+        print(realm.configuration.fileURL)
+    }
     
     deinit {
         print("BookmarkedTVRepository Deinit")
@@ -46,16 +49,23 @@ final class BookmarkedTVRepository: Repository {
         }
     }
     
+    func updateItem(data: ITEM) {
+        realm.create(ITEM.self, 
+                     value: [
+                        "nickname": data.nickname,
+                        "email": data.email,
+                        "profileImageData": data.profileImageData ?? nil,
+                        "isMale": data.isMale,
+                        "phoneNumber": data.phoneNumber
+                     ], update: .modified)
+    }
+    
     func isExist(id: Int) -> Bool {
-        let bookmarkedTV = realm.object(ofType: ITEM.self, forPrimaryKey: id)
-        if bookmarkedTV != nil {
+        let profileRealmModel = realm.object(ofType: ITEM.self, forPrimaryKey: id)
+        if let profileRealmModel {
             return true
         } else {
             return false
         }
-    }
-    
-    func updateItem(data: BookmarkedTV) {
-        
     }
 }

@@ -20,4 +20,5 @@ enum ImageString {
     
     static let playButton: String = "playButton"
     static let playCircle: String = "playCircle"
+    static let defaultProfile: String = "defaultProfile"
 }

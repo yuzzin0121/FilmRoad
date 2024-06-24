@@ -31,7 +31,11 @@ struct MyBookmarkListView: View {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                             ForEach(viewModel.output.bookmarkedTVList, id: \.id) { tv in
-                                bookmarkedTV(tv: tv)
+                                NavigationLink {
+                                    MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+                                } label: {
+                                    bookmarkedTV(tv: tv)
+                                }
                             }
                         }
                     }

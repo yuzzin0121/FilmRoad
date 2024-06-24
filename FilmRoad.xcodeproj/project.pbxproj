@@ -48,6 +48,9 @@
 		617E44FB2C28534E0030678D /* TVVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E44FA2C28534E0030678D /* TVVideoViewModel.swift */; };
 		617E44FD2C288AA10030678D /* TVVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E44FC2C288AA10030678D /* TVVideoView.swift */; };
 		617E44FF2C288D2F0030678D /* VideoResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E44FE2C288D2F0030678D /* VideoResponseModel.swift */; };
+		617E45072C29731E0030678D /* TVRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45062C29731E0030678D /* TVRealmModel.swift */; };
+		617E450A2C2973570030678D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 617E45092C2973570030678D /* Realm */; };
+		617E450C2C2973570030678D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 617E450B2C2973570030678D /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +95,7 @@
 		617E44FA2C28534E0030678D /* TVVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVVideoViewModel.swift; sourceTree = "<group>"; };
 		617E44FC2C288AA10030678D /* TVVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVVideoView.swift; sourceTree = "<group>"; };
 		617E44FE2C288D2F0030678D /* VideoResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResponseModel.swift; sourceTree = "<group>"; };
+		617E45062C29731E0030678D /* TVRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRealmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617E450C2C2973570030678D /* RealmSwift in Frameworks */,
+				617E450A2C2973570030678D /* Realm in Frameworks */,
 				6173C5132C12FD270089E1E6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +234,7 @@
 		612AA1B52C12ABC500A7B1F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				617E45052C2973050030678D /* Realm */,
 				6109A2FA2C12FF6F00B5E7A2 /* Response */,
 			);
 			path = Model;
@@ -441,6 +448,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		617E45052C2973050030678D /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				617E45062C29731E0030678D /* TVRealmModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -459,6 +474,8 @@
 			name = FilmRoad;
 			packageProductDependencies = (
 				6173C5122C12FD270089E1E6 /* Alamofire */,
+				617E45092C2973570030678D /* Realm */,
+				617E450B2C2973570030678D /* RealmSwift */,
 			);
 			productName = FilmRoad;
 			productReference = 612AA19F2C12AB5800A7B1F5 /* FilmRoad.app */;
@@ -490,6 +507,7 @@
 			mainGroup = 612AA1962C12AB5800A7B1F5;
 			packageReferences = (
 				6173C5112C12FD270089E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				617E45082C2973570030678D /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 612AA1A02C12AB5800A7B1F5 /* Products */;
 			projectDirPath = "";
@@ -541,6 +559,7 @@
 				6173C50D2C12FC740089E1E6 /* TMDBNetworkManager.swift in Sources */,
 				6173C50B2C12D9E10089E1E6 /* SearchViewModel.swift in Sources */,
 				612AA1DC2C12CF8D00A7B1F5 /* SearchFilmView.swift in Sources */,
+				617E45072C29731E0030678D /* TVRealmModel.swift in Sources */,
 				6109A2FC2C12FF7900B5E7A2 /* TVResponseModel.swift in Sources */,
 				617E44F22C2832B90030678D /* EpisodeListResponseModel.swift in Sources */,
 				617E44FD2C288AA10030678D /* TVVideoView.swift in Sources */,
@@ -780,6 +799,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		617E45082C2973570030678D /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.47.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -787,6 +814,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6173C5112C12FD270089E1E6 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		617E45092C2973570030678D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 617E45082C2973570030678D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		617E450B2C2973570030678D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 617E45082C2973570030678D /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

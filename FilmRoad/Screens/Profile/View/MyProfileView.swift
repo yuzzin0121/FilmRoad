@@ -38,11 +38,9 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                             nicknameText(nickname: viewModel.output.profile?.nickname ?? "닉네임 없음")
                             Spacer()
                                 .frame(height: 4)
-                            Text("이메일 \(viewModel.output.profile?.email ?? "")")
-                                .subTitleFont()
+                            infoTextView(title: "이메일", info: viewModel.output.profile?.email)
                             genderText(isMale: viewModel.output.profile?.isMale)
-                            Text("전화번호 \(viewModel.output.profile?.phoneNumber ?? "")")
-                                .subTitleFont()
+                            infoTextView(title: "전화번호", info: viewModel.output.profile?.phoneNumber)
                             Spacer()
                         }
                         Spacer()
@@ -60,6 +58,16 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
         .foregroundStyle(.white)
         .task {
             viewModel.action(.viewOnAppear)
+        }
+    }
+    
+    private func infoTextView(title: String, info: String?) -> some View {
+        HStack(spacing: 4) {
+            Text(title)
+                .subTitleFont(.gray)
+            Text(info ?? "")
+                .subTitleFont(.white)
+            Spacer()
         }
     }
     
@@ -98,11 +106,21 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
     
     private func genderText(isMale: Bool?) -> some View {
         guard let isMale else {
-            return Text("성별")
-                .subTitleFont()
+            return HStack {
+                Text("성별")
+                    .subTitleFont(.gray)
+                Text("")
+                    .subTitleFont(.white)
+                Spacer()
+            }
         }
         
-        return Text("성별 \(isMale ? "남" : "여")")
-            .subTitleFont()
+        return HStack {
+            Text("성별")
+                .subTitleFont(.gray)
+            Text("\(isMale ? "남" : "여")")
+                .subTitleFont(.white)
+            Spacer()
+        }
     }
 }

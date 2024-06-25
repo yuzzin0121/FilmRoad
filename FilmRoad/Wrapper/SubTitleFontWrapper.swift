@@ -8,15 +8,17 @@
 import SwiftUI
 
 private struct SubTitleFontWrapper: ViewModifier {
+    let color: Color
+    
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16))
-            .foregroundStyle(.gray)
+            .foregroundStyle(color)
     }
 }
 
 extension View {
-    func subTitleFont() -> some View {
-        modifier(SubTitleFontWrapper())
+    func subTitleFont(_ color: Color) -> some View {
+        modifier(SubTitleFontWrapper(color: color))
     }
 }

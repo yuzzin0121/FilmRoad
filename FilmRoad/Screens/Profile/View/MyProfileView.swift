@@ -24,7 +24,7 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                         VStack(spacing: 4) {
                             profileImage(data: viewModel.output.profile?.profileImageData)
                             NavigationLink {
-                                EditProfileView(viewModel: EditProfileViewModel(repository: ProfileRepository(), profile: viewModel.output.profile))
+                                EditProfileView(viewModel: EditProfileViewModel(repository: ProfileRepository() as! Repo, profile: viewModel.output.profile), profileViewModel: viewModel)
                             } label: {
                                 editProfileButton()
                             }

@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import PhotosUI
+import SwiftUI
 
 @MainActor
 final class EditProfileViewModel<Repo: Repository>: ObservableObject where Repo.ITEM == ProfileRealmModel  {

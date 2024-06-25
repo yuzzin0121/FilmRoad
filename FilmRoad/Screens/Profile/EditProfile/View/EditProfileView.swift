@@ -11,6 +11,7 @@ import Combine
 struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmModel {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EditProfileViewModel<Repo>
+    @StateObject var profileViewModel: MyProfileViewModel<Repo>
     
     var body: some View {
         ZStack {
@@ -76,6 +77,7 @@ struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMo
         }
         .onChange(of: viewModel.output.editSuccess) { success in
            if success {
+               profileViewModel.output.profile = viewModel.output.profile
                dismiss()
            }
         }

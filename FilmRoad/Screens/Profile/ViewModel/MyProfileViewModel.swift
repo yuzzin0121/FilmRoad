@@ -29,7 +29,7 @@ final class MyProfileViewModel<Repo: Repository>: ObservableObject where Repo.IT
                 if isEmptyProfile(profileList: profileList) {   // 프로필이 존재하지 않을 경우
                     createProfile()
                 } else {
-                    
+                    setProfile(profileList: profileList)
                 }
             }
             .store(in: &cancellables)
@@ -46,10 +46,22 @@ final class MyProfileViewModel<Repo: Repository>: ObservableObject where Repo.IT
     private func createProfile() {
         let profileRealmModel = ProfileRealmModel()
         repository.createItem(data: profileRealmModel)
+        output.profile = getProfile(profileRealmModel: profileRealmModel)
     }
     
     private func setProfile(profileList: [ProfileRealmModel]) {
-        output.profile = profileList.first
+        if let profileRealmModel = profileList.first {
+            output.profile = getProfile(profileRealmModel: profileRealmModel)
+        }
+    }
+    
+    private func getProfile(profileRealmModel: ProfileRealmModel) -> Profile {
+        return Profile(id: profileRealmModel.id,
+                       nickname: profileRealmModel.nickname,
+                       email: profileRealmModel.email,
+                       profileImageData: profileRealmModel.profileImageData,
+                       isMale: profileRealmModel.isMale,
+                       phoneNumber: profileRealmModel.phoneNumber)
     }
 }
 
@@ -58,7 +70,7 @@ extension MyProfileViewModel {
         var viewOnAppear = PassthroughSubject<Void, Never>()
     }
     struct Output {
-        var profile: ProfileRealmModel?
+        var profile: Profile?
     }
     
     enum Action {

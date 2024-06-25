@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmModel {
     @Environment(\.dismiss) var dismiss
@@ -24,29 +25,37 @@ struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMo
                         editImageButton()
                         Spacer()
                             .frame(height: 40)
-                        HStack {
-                            VStack(alignment: .leading, spacing: 12) {
-                                infoTitleText(title: "이름")
-                                infoTitleText(title: "이메일")
-                                infoTitleText(title: "성별")
-                                infoTitleText(title: "전화번호")
-                                Spacer()
-                            }
+                        VStack(alignment: .leading) {
+                            warningText(warningText: viewModel.output.warningString)
                             Spacer()
-                                .frame(width: 50)
-                            VStack(alignment: .leading, spacing: 12){
-                                ProfileTextField(infoText: $viewModel.name, placeholder: "이름")
-                                ProfileTextField(infoText: $viewModel.email, placeholder: "이메일")
-                                GenderMenu(isMale: $viewModel.isMale)
-                                ProfileTextField(infoText: $viewModel.phoneNumber, placeholder: "전화번호")
+                                .frame(height: 12)
+                            HStack {
+                                VStack(alignment: .leading, spacing: 12) {
+                                    infoTitleText(title: "닉네임")
+                                    infoTitleText(title: "이메일")
+                                    infoTitleText(title: "성별")
+                                    infoTitleText(title: "전화번호")
+                                    Spacer()
+                                }
                                 Spacer()
+                                    .frame(width: 50)
+                                VStack(alignment: .leading, spacing: 12){
+                                    ProfileTextField(infoText: $viewModel.nickname, placeholder: "닉네임")
+                                    ProfileTextField(infoText: $viewModel.email, placeholder: "이메일")
+                                    GenderMenu(isMale: $viewModel.isMale)
+                                    ProfileTextField(infoText: $viewModel.phoneNumber, placeholder: "전화번호")
+                                    Spacer()
+                                }
                             }
                         }
+                        Spacer()
+                        
                     }
                 }
                 .padding(.horizontal, 20)
                 
                 Spacer()
+                editButton(isValid: viewModel.output.isValid)
             }
             .navigationBarBackButtonHidden(true)    // default 버튼 지우기
             .navigationBar(title: {
@@ -64,6 +73,34 @@ struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMo
         }
         .task {
             viewModel.action(.viewOnAppear)
+        }
+        .onChange(of: viewModel.output.editSuccess) { success in
+           if success {
+               dismiss()
+           }
+        }
+        .sheet(isPresented: $viewModel.output.isShowImagePicker, content: {
+            ImagePicker(image: $viewModel.profileImage, configuration: viewModel.output.pickerConfig)
+                .ignoresSafeArea()
+        })
+    }
+    
+    private func editButton(isValid: Bool) -> some View {
+        HStack {
+            Spacer()
+            Text("수정하기")
+                .font(.system(size: 18).bold())
+                .foregroundStyle(.white)
+            Spacer()
+        }
+        .padding(.vertical, 14)
+        .background(isValid ? .blue : .darkGray)
+        .clipShape(.rect(cornerRadius: 12))
+        .padding(.vertical, 10)
+        .wrapToButton {
+            if isValid {
+                viewModel.action(.editButtonTap)
+            }
         }
     }
     
@@ -86,8 +123,15 @@ struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMo
             .font(.system(size: 15))
             .foregroundStyle(.blue)
             .wrapToButton {
-                print("프로필 이미지 변경")
+                viewModel.action(.imageEditButtonTap)
             }
+    }
+    
+    private func warningText(warningText: String) -> some View {
+        Text(warningText)
+            .font(.system(size: 15))
+            .foregroundStyle(.red)
+            .frame(height: 15)
     }
     
     private func infoTitleText(title: String) -> some View {

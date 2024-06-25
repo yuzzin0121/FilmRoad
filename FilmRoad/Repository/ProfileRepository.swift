@@ -50,14 +50,21 @@ final class ProfileRepository: Repository {
     }
     
     func updateItem(data: ITEM) {
-        realm.create(ITEM.self, 
-                     value: [
-                        "nickname": data.nickname,
-                        "email": data.email,
-                        "profileImageData": data.profileImageData ?? nil,
-                        "isMale": data.isMale,
-                        "phoneNumber": data.phoneNumber
-                     ], update: .modified)
+        do {
+            try realm.write  {
+                realm.create(ITEM.self,
+                             value: [
+                                "id": data.id,
+                                "nickname": data.nickname,
+                                "email": data.email,
+                                "profileImageData": data.profileImageData ?? nil,
+                                "isMale": data.isMale,
+                                "phoneNumber": data.phoneNumber
+                             ], update: .modified)
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func isExist(id: Int) -> Bool {

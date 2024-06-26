@@ -15,6 +15,7 @@ final class MyProfileViewModel<Repo: Repository>: ObservableObject where Repo.IT
     private var input = Input()
     @Published var output = Output()
     private var repository: Repo
+    private let bookmarkedTVRepository = BookmarkedTVRepository()
     
     init(repository: Repo) {
         self.repository = repository
@@ -25,31 +26,41 @@ final class MyProfileViewModel<Repo: Repository>: ObservableObject where Repo.IT
         input.viewOnAppear
             .sink { [weak self] _ in
                 guard let self else { return }
-                let profileList = getProfile()
-                if isEmptyProfile(profileList: profileList) {   // 프로필이 존재하지 않을 경우
-                    createProfile()
-                } else {
-                    setProfile(profileList: profileList)
+                Task {
+                    let profileList = await self.getProfile()
+                    if await self.isEmptyProfile(profileList: profileList) {   // 프로필이 존재하지 않을 경우
+                        await self.createProfile()
+                    } else {
+                        await self.setProfile(profileList: profileList)
+                    }
+                }
+                Task {
+                    await self.fetchBookmarkedTVCount()
                 }
             }
             .store(in: &cancellables)
     }
     
-    private func getProfile() -> [ProfileRealmModel] {
+    private func fetchBookmarkedTVCount() async {
+        let count = bookmarkedTVRepository.fetchItem().count
+        output.bookmarkedTVCount = count
+    }
+    
+    private func getProfile() async -> [ProfileRealmModel] {
         return repository.fetchItem()
     }
     
-    private func isEmptyProfile(profileList: [ProfileRealmModel]) -> Bool {
+    private func isEmptyProfile(profileList: [ProfileRealmModel]) async -> Bool {
         return profileList.isEmpty
     }
     
-    private func createProfile() {
+    private func createProfile() async {
         let profileRealmModel = ProfileRealmModel()
         repository.createItem(data: profileRealmModel)
         output.profile = getProfile(profileRealmModel: profileRealmModel)
     }
     
-    private func setProfile(profileList: [ProfileRealmModel]) {
+    private func setProfile(profileList: [ProfileRealmModel]) async {
         if let profileRealmModel = profileList.first {
             output.profile = getProfile(profileRealmModel: profileRealmModel)
         }
@@ -71,6 +82,7 @@ extension MyProfileViewModel {
     }
     struct Output {
         var profile: Profile?
+        var bookmarkedTVCount: Int = 0
     }
     
     enum Action {

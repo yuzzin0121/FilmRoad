@@ -18,21 +18,18 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                 VStack {
                     Spacer()
                         .frame(height: 40)
-                    HStack {
-                        Spacer()
-                            .frame(width: 10)
-                        VStack(spacing: 4) {
+                    HStack(alignment: .top) {
+                        VStack(spacing: 2) {
                             profileImage(data: viewModel.output.profile?.profileImageData)
                             NavigationLink {
                                 EditProfileView(viewModel: EditProfileViewModel(repository: ProfileRepository() as! Repo, profile: viewModel.output.profile), profileViewModel: viewModel)
                             } label: {
                                 editProfileButton()
                             }
-                            Spacer()
                         }
                         Spacer()
                             .frame(width: 20)
-                        VStack(alignment: .leading, spacing: 6) {
+                        VStack(alignment: .leading, spacing: 10) {
                             Spacer()
                                 .frame(height: 1)
                             nicknameText(nickname: viewModel.output.profile?.nickname ?? "닉네임 없음")
@@ -41,10 +38,11 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                             infoTextView(title: "이메일", info: viewModel.output.profile?.email)
                             genderText(isMale: viewModel.output.profile?.isMale)
                             infoTextView(title: "전화번호", info: viewModel.output.profile?.phoneNumber)
-                            Spacer()
                         }
                         Spacer()
                     }
+                    .padding(.horizontal, 10)
+                    bookmarkedTVCountText(nickname: viewModel.output.profile?.nickname, count: viewModel.output.bookmarkedTVCount)
                     Spacer()
                 }
             }
@@ -59,6 +57,26 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
         .task {
             viewModel.action(.viewOnAppear)
         }
+    }
+    
+    private func bookmarkedTVCountText(nickname: String?, count: Int) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("\(nickname ?? "닉네임없음")님은")
+            HStack(spacing: 0) {
+                Text("\(count)개의 TV")
+                    .font(.system(size: 17).bold())
+                    .foregroundStyle(.blue)
+                Text("를 북마크하고 있어요!")
+                    .font(.system(size: 17))
+                Spacer()
+            }
+        }
+        .padding(.vertical, 16)
+        .padding(.horizontal, 20)
+        .background(.darkGray)
+        .clipShape(.rect(cornerRadius: 14))
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
     }
     
     private func infoTextView(title: String, info: String?) -> some View {
@@ -90,9 +108,9 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
             .font(.system(size: 15))
             .foregroundStyle(.white)
             .padding(.horizontal, 12)
-            .padding(.vertical, 6)
+            .padding(.vertical, 4)
             .overlay {
-                RoundedRectangle(cornerRadius: 4)
+                RoundedRectangle(cornerRadius: 6)
                     .stroke(.white, lineWidth: 1)
             }
             .padding()

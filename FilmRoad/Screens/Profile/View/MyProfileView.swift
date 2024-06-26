@@ -43,6 +43,7 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                     }
                     .padding(.horizontal, 10)
                     bookmarkedTVCountText(nickname: viewModel.output.profile?.nickname, count: viewModel.output.bookmarkedTVCount)
+                    settingListView(settingList: viewModel.output.settingList)
                     Spacer()
                 }
             }
@@ -57,6 +58,17 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
         .task {
             viewModel.action(.viewOnAppear)
         }
+    }
+    
+    private func settingListView(settingList: [SettingItem]) -> some View {
+        LazyVStack(alignment: .leading, spacing: 32) {
+            ForEach(settingList, id: \.self) { settingItem in
+                Text(settingItem.title)
+                    .font(.system(size: 17))
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 14)
     }
     
     private func bookmarkedTVCountText(nickname: String?, count: Int) -> some View {
@@ -76,7 +88,7 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
         .background(.darkGray)
         .clipShape(.rect(cornerRadius: 14))
         .padding(.horizontal, 20)
-        .padding(.vertical, 14)
+        .padding(.vertical, 20)
     }
     
     private func infoTextView(title: String, info: String?) -> some View {

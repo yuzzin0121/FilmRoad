@@ -64,6 +64,7 @@
 		617E45282C2A3BB90030678D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45272C2A3BB90030678D /* ImagePicker.swift */; };
 		617E452A2C2A44BD0030678D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E45292C2A44BD0030678D /* Profile.swift */; };
 		617E452C2C2A4A1A0030678D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E452B2C2A4A1A0030678D /* Validator.swift */; };
+		617E452E2C2C60150030678D /* SettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617E452D2C2C60150030678D /* SettingItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +123,7 @@
 		617E45272C2A3BB90030678D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		617E45292C2A44BD0030678D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		617E452B2C2A4A1A0030678D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		617E452D2C2C60150030678D /* SettingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +389,7 @@
 				612AA1D32C12AF0700A7B1F5 /* Image.swift */,
 				612AA1D52C12C0DF00A7B1F5 /* TabItem.swift */,
 				617E44DC2C1F03AF0030678D /* TVInfoItem.swift */,
+				617E452D2C2C60150030678D /* SettingItem.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				617E44FB2C28534E0030678D /* TVVideoViewModel.swift in Sources */,
 				617E45142C29890E0030678D /* MyBookmarkListViewModel.swift in Sources */,
 				612AA1DF2C12D34000A7B1F5 /* MovieListViewModel.swift in Sources */,
+				617E452E2C2C60150030678D /* SettingItem.swift in Sources */,
 				617E45282C2A3BB90030678D /* ImagePicker.swift in Sources */,
 				617E44E12C20843B0030678D /* TVPosterImageView.swift in Sources */,
 				6173C5152C12FD660089E1E6 /* TargetType.swift in Sources */,

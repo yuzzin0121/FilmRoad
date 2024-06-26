@@ -83,6 +83,7 @@ extension MyProfileViewModel {
     struct Output {
         var profile: Profile?
         var bookmarkedTVCount: Int = 0
+        var settingList: [SettingItem] = SettingItem.allCases
     }
     
     enum Action {

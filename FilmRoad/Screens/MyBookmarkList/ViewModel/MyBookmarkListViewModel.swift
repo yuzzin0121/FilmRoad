@@ -17,7 +17,6 @@ final class MyBookmarkListViewModel<Repo: Repository>: ObservableObject where Re
     private let repository: Repo
     
     init(repository: Repo) {
-        print(#function)
         self.repository = repository
         transform()
     }
@@ -37,7 +36,6 @@ final class MyBookmarkListViewModel<Repo: Repository>: ObservableObject where Re
         
         input.cancelBookmark
             .sink { [weak self] tvId in
-                print(tvId)
                 guard let self else { return }
                 repository.deleteItem(id: tvId)
                 if let index = output.bookmarkedTVList.firstIndex(where: { $0.id == tvId }) {
@@ -50,20 +48,16 @@ final class MyBookmarkListViewModel<Repo: Repository>: ObservableObject where Re
     
     // 북마크된 TV 리스트 조회
     private func fetchBookmarkedTVList() -> [BookmarkedTV] {
-        print(#function)
         let bookmarkedTVList = repository.fetchItem()
-        print(bookmarkedTVList)
         return bookmarkedTVList
     }
     
     // BookmarkedTV -> TV 리스트로 변경 후 output에 반영
     private func setTVList(bookmarkedTVList: [BookmarkedTV]) {
-        print(#function)
         let tvList = bookmarkedTVList.map {
             TV(id: $0.id, name: $0.name, originalName: $0.originalName, posterPath: $0.posterPath, backdropPath: $0.backdropPath, isBookmarked: true)
         }
         output.bookmarkedTVList = tvList
-        print(tvList)
     }
 
 }

@@ -36,7 +36,6 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            print(results)
             
             if !(results.isEmpty) {
                 for result in results {

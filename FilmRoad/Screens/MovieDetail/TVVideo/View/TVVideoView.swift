@@ -11,6 +11,11 @@ struct TVVideoView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: TVVideoViewModel
     
+    init(viewModel: TVVideoViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+        print("TVVideoView Init")
+    }
+    
     var body: some View {
         ZStack {
             Color(.black)

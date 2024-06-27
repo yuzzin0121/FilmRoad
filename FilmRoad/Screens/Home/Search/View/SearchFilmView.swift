@@ -12,6 +12,10 @@ struct SearchFilmView: View {
     @State private var query: String = ""
     @StateObject var viewModel = SearchViewModel()
     
+    init() {
+        print("SearchFilmView Init")
+    }
+    
     var body: some View {
         ZStack {
             Color(.black)
@@ -22,7 +26,7 @@ struct SearchFilmView: View {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                         ForEach(viewModel.output.searchedTVList, id: \.id) { tv in
-                            NavigationLink {
+                            LazyNavigationLink {
                                 MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
                             } label: {
                                 TVThumbnailView(tv: tv)

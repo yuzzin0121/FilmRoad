@@ -12,7 +12,6 @@ struct TVEpisodeCellView: View {
     
     init(episode: Episode) {
         self.episode = episode
-        print("=====받음\(episode)====")
     }
     
     var body: some View {

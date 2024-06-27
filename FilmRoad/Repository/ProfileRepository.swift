@@ -14,7 +14,7 @@ final class ProfileRepository: Repository {
     private let realm = try! Realm()
     
     init() {
-        print(realm.configuration.fileURL)
+//        print(realm.configuration.fileURL)
     }
     
     deinit {

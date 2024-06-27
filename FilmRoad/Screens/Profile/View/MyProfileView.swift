@@ -11,7 +11,7 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
     @StateObject var viewModel: MyProfileViewModel<Repo>
     
     var body: some View {
-        NavigationStack {
+        NavigationWrapper {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
@@ -21,7 +21,7 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                     HStack(alignment: .top) {
                         VStack(spacing: 2) {
                             profileImage(data: viewModel.output.profile?.profileImageData)
-                            NavigationLink {
+                            LazyNavigationLink {
                                 EditProfileView(viewModel: EditProfileViewModel(repository: ProfileRepository() as! Repo, profile: viewModel.output.profile), profileViewModel: viewModel)
                             } label: {
                                 editProfileButton()

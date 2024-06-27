@@ -25,7 +25,6 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .filter { !$0.trimmingCharacters(in: [" "]).isEmpty }
             .sink { [weak self] query in
-                print(query)
                 guard let self else { return }
                 Task {
                     await self.searchTV(query: query)
@@ -35,11 +34,8 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func searchTV(query: String) async {
-        print(#function)
         do {
             let tvResponseModel = try await TMDBNetworkManager.shared.requestToTMDB(model: TVResponseModel.self, router: TMDBRouter.tvSearch(query: query))
-            print(tvResponseModel)
-            print(tvResponseModel.totalResults)
             output.searchedTVList = tvResponseModel.results
         } catch {
             print(error)

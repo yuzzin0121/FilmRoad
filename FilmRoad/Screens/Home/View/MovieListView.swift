@@ -34,7 +34,7 @@ struct MovieListView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationWrapper {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
@@ -56,12 +56,13 @@ struct MovieListView: View {
                 Text("FilmRoad")
                     .font(.title).bold()
             }, trailing: {
-                NavigationLink {
+                LazyNavigationLink {
                     SearchFilmView()
                 } label: {
                     Image(ImageString.search)
                 }
             })
+
         }
         .foregroundStyle(.white)
         .task {
@@ -71,7 +72,7 @@ struct MovieListView: View {
     
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
-            NavigationLink {
+            LazyNavigationLink {
                 MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
             } label: {
                 image
@@ -92,7 +93,7 @@ struct MovieListView: View {
                     }
             }
         } placeholder: {
-            NavigationLink {
+            LazyNavigationLink {
                 MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
             } label: {
                 Rectangle()
@@ -109,7 +110,7 @@ struct MovieListView: View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem()], spacing: 10, content: {
                 ForEach(tvList, id: \.id) { tv in
-                    NavigationLink {
+                    LazyNavigationLink {
                         MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
                     } label: {
                         TVThumbnailView(tv: tv)

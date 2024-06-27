@@ -44,7 +44,6 @@ final class TVVideoViewModel: ObservableObject {
     private func getVideoURLString(videoList: [Video]) -> String? {
         if let video = videoList.first {
             let urlString = APIKey.videoBaseURL.rawValue + video.key
-            print(urlString)
             return urlString
         } else {
             print("비디오 없음")

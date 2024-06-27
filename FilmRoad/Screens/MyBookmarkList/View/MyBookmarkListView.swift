@@ -21,7 +21,7 @@ struct MyBookmarkListView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationWrapper {
             ZStack {
                 Color(.black)
                     .ignoresSafeArea()
@@ -31,7 +31,7 @@ struct MyBookmarkListView: View {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                             ForEach(viewModel.output.bookmarkedTVList, id: \.id) { tv in
-                                NavigationLink {
+                                LazyNavigationLink {
                                     MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
                                 } label: {
                                     bookmarkedTV(tv: tv)

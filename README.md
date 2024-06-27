@@ -29,12 +29,11 @@
 
 
 ### 🔍 TV 프로그램 탐색 • 검색 • 상세 화면
-|TV 프로그램 탐색|TV 프로그램 검색|상세 화면|캐스트 정보|비슷한 컨텐츠|시즌에 대한 에피소드 리스트|티저 재생|북마크 등록 • 취소|북마크 조회|
-|-----|---|---|---|---|---|---|---|---|
-|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|<img src= width=150 height=330>|
+|TV 프로그램 탐색|TV 프로그램 검색|상세 화면|에피소드 리스트|티저 재생|북마크 등록 • 취소|북마크 조회|
+|-----|---|---|---|---|---|---|
+|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/3fce8338-6f90-4e96-ad9b-10a8a340db89 width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/35740b9e-34c7-40db-8c93-9e367e437a1f width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/167070cf-3ef9-4210-8c5b-7d1a509a1a2f width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/623329d4-d120-4181-9f7c-dc1f3c124b39 width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/805c7aa4-edcd-4676-977b-693edf311abe width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/f440eab6-64e9-4483-933f-542dd9094b52 width=150 height=330>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/a6776512-453f-4acc-ab58-48415808d0e9 width=150 height=330>|
 
 <br>
-
 
 ## 주요 기술
 **Platform** - SwiftUI / UIKit
@@ -86,7 +85,7 @@ struct NavigationLazyView<T: View>: View {
 
 |NavigationLazyView 적용 전|NavigationLazyView 적용 후|
 |------|---|
-|<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/e9ae4cee-447a-47eb-a54a-b37ecca9a0b2" width=400 height=350></Image>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/9c0f2b48-5523-4a81-a0ce-c03945e7999d width=650 height=50>|
+|<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/e9ae4cee-447a-47eb-a54a-b37ecca9a0b2" width=380 height=350></Image>|<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/9c0f2b48-5523-4a81-a0ce-c03945e7999d width=650 height=45>|
 
 
 
@@ -100,5 +99,5 @@ struct NavigationLazyView<T: View>: View {
 <Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/e0326e0c-d40e-4fb2-99b7-8cbc6697535f" width=430 height=400></Image>
 
 ### View
-<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/f8ec88c9-eef3-4cbd-bc23-5f669e0a7f62" width=280 height=50></Image><br>
-<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/c07f4bf2-954d-4372-8827-f90350ba9182" width=450 height=100></Image>
+<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/f8ec88c9-eef3-4cbd-bc23-5f669e0a7f62" width=260 height=50></Image><br>
+<Image src="https://github.com/yuzzin0121/FilmRoad/assets/77273340/c07f4bf2-954d-4372-8827-f90350ba9182" width=430 height=100></Image>

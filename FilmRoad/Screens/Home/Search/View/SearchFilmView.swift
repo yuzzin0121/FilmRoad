@@ -10,10 +10,11 @@ import SwiftUI
 struct SearchFilmView: View {
     @Environment(\.dismiss) var dismiss
     @State private var query: String = ""
-    @StateObject var viewModel = SearchViewModel()
+    @StateObject var viewModel: SearchViewModel
     
     init() {
         print("SearchFilmView Init")
+        _viewModel = StateObject(wrappedValue: SearchViewModel())
     }
     
     var body: some View {
@@ -26,8 +27,8 @@ struct SearchFilmView: View {
                 ScrollView {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                         ForEach(viewModel.output.searchedTVList, id: \.id) { tv in
-                            LazyNavigationLink {
-                                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+                            NavigationLink {
+                                NavigationLazyView(MovieDetailView<BookmarkedTVRepository>(tv: tv))
                             } label: {
                                 TVThumbnailView(tv: tv)
                             }

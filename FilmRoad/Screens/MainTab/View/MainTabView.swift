@@ -26,11 +26,11 @@ struct MainTabView: View {
                 .customTabItem(selection == 0 ? TabItem.home.selectedImage : TabItem.home.image, TabItem.home.title)
                 .tag(0)
             
-            MyBookmarkListView()
+            MyBookmarkListView<BookmarkedTVRepository>()
                 .customTabItem(selection == 1 ? TabItem.myList.selectedImage : TabItem.myList.image, TabItem.myList.title)
                 .tag(1)
             
-            MyProfileView(viewModel: MyProfileViewModel(repository: ProfileRepository()))
+            MyProfileView<ProfileRepository>()
                 .customTabItem(selection == 2 ? TabItem.profile.selectedImage : TabItem.profile.image, TabItem.profile.title)
                 .tag(2)
         }

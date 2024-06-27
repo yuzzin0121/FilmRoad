@@ -21,9 +21,10 @@ struct MovieListView: View {
             }
         }
     }
-    @StateObject private var viewModel = MovieListViewModel()
+    @StateObject private var viewModel: MovieListViewModel
     
     init() {
+        _viewModel = StateObject(wrappedValue: MovieListViewModel())
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = .black
@@ -56,8 +57,8 @@ struct MovieListView: View {
                 Text("FilmRoad")
                     .font(.title).bold()
             }, trailing: {
-                LazyNavigationLink {
-                    SearchFilmView()
+                NavigationLink {
+                    NavigationLazyView(SearchFilmView())
                 } label: {
                     Image(ImageString.search)
                 }
@@ -72,8 +73,8 @@ struct MovieListView: View {
     
     func randomTV(tv: TV?) -> some View {
         AsyncImage(url: URL(string: APIKey.basePosterURL.rawValue + (tv?.posterPath ?? ""))) { image in
-            LazyNavigationLink {
-                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+            NavigationLink {
+                NavigationLazyView(MovieDetailView<BookmarkedTVRepository>(tv: tv))
             } label: {
                 image
                     .resizable()
@@ -93,8 +94,8 @@ struct MovieListView: View {
                     }
             }
         } placeholder: {
-            LazyNavigationLink {
-                MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+            NavigationLink {
+                NavigationLazyView(MovieDetailView<BookmarkedTVRepository>(tv: tv))
             } label: {
                 Rectangle()
                     .fill(.white.opacity(0.1))
@@ -110,8 +111,8 @@ struct MovieListView: View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: [GridItem()], spacing: 10, content: {
                 ForEach(tvList, id: \.id) { tv in
-                    LazyNavigationLink {
-                        MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+                    NavigationLink {
+                        NavigationLazyView(MovieDetailView<BookmarkedTVRepository>(tv: tv))
                     } label: {
                         TVThumbnailView(tv: tv)
                     }

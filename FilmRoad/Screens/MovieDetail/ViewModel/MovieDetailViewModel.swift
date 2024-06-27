@@ -17,6 +17,7 @@ final class MovieDetailViewModel<Repo: Repository>: ObservableObject where Repo.
     private let repository: Repo
     
     init(tv: TV?, repository: Repo){
+        print("MovieDetailViewModel Init")
         self.repository = repository
         transform()
         let tv = setBookmark(tv: tv)

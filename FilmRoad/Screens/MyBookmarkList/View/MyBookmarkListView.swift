@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct MyBookmarkListView: View {
-    @StateObject var viewModel: MyBookmarkListViewModel = MyBookmarkListViewModel(repository: BookmarkedTVRepository())
+struct MyBookmarkListView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
+    @StateObject var viewModel: MyBookmarkListViewModel<Repo>
     
     init() {
+        _viewModel = StateObject(wrappedValue: MyBookmarkListViewModel(repository: BookmarkedTVRepository() as! Repo))
         let coloredAppearance = UINavigationBarAppearance()
         coloredAppearance.configureWithTransparentBackground()
         coloredAppearance.backgroundColor = .black
@@ -31,8 +32,8 @@ struct MyBookmarkListView: View {
                     ScrollView {
                         LazyVGrid(columns: Array(repeating: GridItem(), count: 3)) {
                             ForEach(viewModel.output.bookmarkedTVList, id: \.id) { tv in
-                                LazyNavigationLink {
-                                    MovieDetailView(viewModel: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository()))
+                                NavigationLink {
+                                    NavigationLazyView(MovieDetailView<BookmarkedTVRepository>(tv: tv))
                                 } label: {
                                     bookmarkedTV(tv: tv)
                                 }

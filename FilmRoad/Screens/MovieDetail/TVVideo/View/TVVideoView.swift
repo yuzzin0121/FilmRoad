@@ -11,8 +11,8 @@ struct TVVideoView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: TVVideoViewModel
     
-    init(viewModel: TVVideoViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(seriesId: Int?) {
+        _viewModel = StateObject(wrappedValue: TVVideoViewModel(seriesId: seriesId))
         print("TVVideoView Init")
     }
     

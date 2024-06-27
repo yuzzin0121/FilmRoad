@@ -10,6 +10,10 @@ import SwiftUI
 struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmModel {
     @StateObject var viewModel: MyProfileViewModel<Repo>
     
+    init() {
+        _viewModel = StateObject(wrappedValue: MyProfileViewModel(repository: ProfileRepository() as! Repo))
+    }
+    
     var body: some View {
         NavigationWrapper {
             ZStack {
@@ -21,8 +25,8 @@ struct MyProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMode
                     HStack(alignment: .top) {
                         VStack(spacing: 2) {
                             profileImage(data: viewModel.output.profile?.profileImageData)
-                            LazyNavigationLink {
-                                EditProfileView(viewModel: EditProfileViewModel(repository: ProfileRepository() as! Repo, profile: viewModel.output.profile), profileViewModel: viewModel)
+                            NavigationLink {
+                                NavigationLazyView(EditProfileView(profile: viewModel.output.profile, profileViewModel: viewModel))
                             } label: {
                                 editProfileButton()
                             }

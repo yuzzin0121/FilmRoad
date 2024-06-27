@@ -15,6 +15,7 @@ final class ProfileRepository: Repository {
     
     init() {
 //        print(realm.configuration.fileURL)
+        print("ProfileRepository Init")
     }
     
     deinit {

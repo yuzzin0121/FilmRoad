@@ -13,6 +13,11 @@ struct EditProfileView<Repo: Repository>: View where Repo.ITEM == ProfileRealmMo
     @StateObject var viewModel: EditProfileViewModel<Repo>
     @StateObject var profileViewModel: MyProfileViewModel<Repo>
     
+    init(profile: Profile?, profileViewModel: MyProfileViewModel<Repo>) {
+        _viewModel = StateObject(wrappedValue: EditProfileViewModel(repository: ProfileRepository() as! Repo, profile: profile))
+        _profileViewModel = StateObject(wrappedValue: profileViewModel)
+    }
+    
     var body: some View {
         ZStack {
             Color(.black)

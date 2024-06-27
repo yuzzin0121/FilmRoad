@@ -11,6 +11,10 @@ struct EpisodeListView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EpisodeListViewModel
     
+    init(seriesId: Int?, seasonNumber: Int) {
+        _viewModel = StateObject(wrappedValue: EpisodeListViewModel(seriesId: seriesId, seasonNumber: seasonNumber))
+    }
+    
     var body: some View {
         ZStack {
             Color(.black)

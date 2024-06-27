@@ -12,8 +12,8 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
     @StateObject var viewModel: MovieDetailViewModel<Repo>
 
     
-    init(viewModel: MovieDetailViewModel<Repo>) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    init(tv: TV?) {
+        _viewModel = StateObject(wrappedValue: MovieDetailViewModel(tv: tv, repository: BookmarkedTVRepository() as! Repo))
         print("MovieDetailView Init")
     }
     
@@ -23,8 +23,8 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
                 .ignoresSafeArea()
             ScrollView {
                 VStack {
-                    LazyNavigationLink {
-                        TVVideoView(viewModel: TVVideoViewModel(seriesId: viewModel.output.tvInfoModel?.id))
+                    NavigationLink {
+                        NavigationLazyView(TVVideoView(seriesId: viewModel.output.tvInfoModel?.id))
                     } label: {
                         posterImage(tv: viewModel.output.tv)
                     }
@@ -51,8 +51,8 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
                         case TVInfoItem.season.rawValue:
                             LazyVStack(spacing: 8) {
                                 ForEach(viewModel.output.seasonList, id: \.self) { season in
-                                    LazyNavigationLink {
-                                        EpisodeListView(viewModel: EpisodeListViewModel(seriesId: viewModel.output.tvInfoModel?.id, seasonNumber: season.seasonNumber))
+                                    NavigationLink {
+                                        NavigationLazyView(EpisodeListView(seriesId: viewModel.output.tvInfoModel?.id, seasonNumber: season.seasonNumber))
                                     } label: {
                                         TVSeasonCellView(season: season)
                                     }
@@ -67,8 +67,8 @@ struct MovieDetailView<Repo: Repository>: View where Repo.ITEM == BookmarkedTV {
                         case TVInfoItem.similarContents.rawValue:
                             LazyVGrid(columns: Array(repeating: GridItem(), count: 3), content: {
                                 ForEach(viewModel.output.similarTVList, id: \.self) { similarTV in
-                                    LazyNavigationLink {
-                                        MovieDetailView(viewModel: MovieDetailViewModel(tv: similarTV, repository: BookmarkedTVRepository() as! Repo))
+                                    NavigationLink {
+                                        NavigationLazyView(MovieDetailView(tv: similarTV))
                                     } label: {
                                         TVThumbnailView(tv: similarTV)
                                     }

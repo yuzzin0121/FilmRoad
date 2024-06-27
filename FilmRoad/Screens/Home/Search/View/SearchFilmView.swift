@@ -40,6 +40,8 @@ struct SearchFilmView: View {
         }
         .navigationBarBackButtonHidden(true)    // default 버튼 지우기
         .navigationBar(title: {
+            Text("TV 프로그램 검색")
+                .bold()
         }, leading: {
             Button{
                 dismiss()

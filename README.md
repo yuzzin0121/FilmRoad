@@ -1,8 +1,9 @@
 # FilmRoad
 
 > FilmRoad는 요즘 인기있는 TV 프로그램 탐색, 검색, 저장할 수 있는 **TV 프로그램 탐색 앱**입니다.
-<img src= width=650 height=350>
+<img src=https://github.com/yuzzin0121/FilmRoad/assets/77273340/62aef7e4-be3a-4afb-a571-d54e4bcd1307 width=650 height=350>
 <br>
+
 
 ## 프로젝트 개발 및 환경
 - iOS 1인 개발
@@ -36,12 +37,12 @@
 <br>
 
 ## 주요 기술
-**Platform** - SwiftUI / UIKit
-**Pattern** - Router / MVVM / Input-Output / DI / Repository
-**Network** - URLSession / Alamofire
-**Database** - Realm
-**Reactive** **Programming** - Combine
-**Etc** - Concurrency / WKWebView
+**Platform** - SwiftUI / UIKit <br>
+**Pattern** - Router / MVVM / Input-Output / DI / Repository <br>
+**Network** - URLSession / Alamofire <br>
+**Database** - Realm <br>
+**Reactive** **Programming** - Combine <br> 
+**Etc** - Concurrency / WKWebView <br>
 <br><br>
 
 ## 핵심 구현

@@ -37,7 +37,7 @@
 <br>
 
 ## 주요 기술
-**Platform** - SwiftUI / UIKit <br>
+**Framework** - SwiftUI / UIKit <br>
 **Pattern** - Router / MVVM / Input-Output / DI / Repository <br>
 **Network** - URLSession / Alamofire <br>
 **Database** - Realm <br>

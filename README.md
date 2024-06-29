@@ -42,7 +42,7 @@
 **Network** - URLSession / Alamofire <br>
 **Database** - Realm <br>
 **Reactive** **Programming** - Combine <br> 
-**Etc** - Concurrency / WKWebView <br>
+**Etc** - Swift Concurrency / WKWebView <br>
 <br><br>
 
 ## 핵심 구현
